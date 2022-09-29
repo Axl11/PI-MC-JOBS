@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Vacante extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nombreVacante', 'descripcionVacante', 'sueldoVacante', 'direccionVacante', 'horarioVacante', 'puestosDisponibles'];
 }

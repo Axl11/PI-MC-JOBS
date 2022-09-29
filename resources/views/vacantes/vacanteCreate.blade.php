@@ -8,25 +8,28 @@
 </head>
 <body>
     <h1>Crear Vacante</h1>
-    <form action="">
-        <label for="nombreVacante">
-            <input type="text" name="nombreVacante" id="nombreVacante">Nombre</label>
+    <form action="/vacante" method="POST">
+        @csrf
+        <label for="nombreVacante">Nombre</label>
+            <input type="text" name="nombreVacante" id="nombreVacante">
         </br>
-        <label for="descripcionVacante">
-            <input type="text" name="descripcionVacante" id="descripcionVacante">Descripcion</label>
+        <label for="descripcionVacante">Descripcion</label>
+            <input type="text" name="descripcionVacante" id="descripcionVacante">
         </br>
-        <label for="">
-            <input type="text" name="" id=""></label>
+        <label for="sueldoVacante">Sueldo</label>
+            <input type="number" step="0.01" min="0" max="999999" name="sueldoVacante" id="sueldoVacante">
         </br>
-        <label for="direccionVacante">
-            <input type="text" name="direccionVacante" id="direccionVacante">Dirección</label>
+        <label for="direccionVacante">Dirección</label>
+            <input type="text" name="direccionVacante" id="direccionVacante">
         </br>
-        <label for="horarioVacante">
-            <input type="text" name="horarioVacante" id="horarioVacante">Horario</label>
+        <label for="horarioVacante">Horario</label>
+            <input type="text" name="horarioVacante" id="horarioVacante">
         </br>
-        <label for="puestosDisponibles">
-            <input type="text" name="puestosDisponibles" id="puestosDisponibles">Puestos Disponibles</label>
+        <label for="puestosDisponibles">Puestos Disponibles</label>
+            <input type="integer" name="puestosDisponibles" id="puestosDisponibles">
         </br>
+
+        <button type="submit">Enviar</button>
     </form>
 </body>
 </html>

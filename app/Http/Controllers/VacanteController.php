@@ -14,7 +14,8 @@ class VacanteController extends Controller
      */
     public function index()
     {
-        //
+        $vacantes = Vacante::all();
+        return view('vacantes/vacanteIndex', compact('vacantes'));
     }
 
     /**
@@ -35,7 +36,18 @@ class VacanteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombreVacante'=>'required|min:1|max:255',
+            'descripcionVacante'=>'required|min:10|max:255',
+            'sueldoVacante'=>'min:0',
+            'direccionVacante'=>'required|min:1|max:255',
+            'horarioVacante'=>'max:255',
+            'puestosDisponibles'=>'integer|min:0',
+        ]);
+
+        Vacante::create($request->all());
+
+        return redirect('/vacante');
     }
 
     /**
