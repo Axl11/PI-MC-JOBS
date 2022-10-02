@@ -22,7 +22,11 @@
         </tr>
         @foreach ($vacantes as $vacante)
             <tr>
-                <td>{{ $vacante->nombreVacante }}</td>
+                <td>
+                    <a href="/vacante/{{ $vacante->id }}">
+                        {{ $vacante->nombreVacante }}
+                    </a>
+                </td>
                 <td>{{ $vacante->descripcionVacante }}</td>
                 <td>{{ $vacante->sueldoVacante }}</td>
                 <td>{{ $vacante->direccionVacante }}</td>

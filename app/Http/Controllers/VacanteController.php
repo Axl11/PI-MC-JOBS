@@ -58,7 +58,7 @@ class VacanteController extends Controller
      */
     public function show(Vacante $vacante)
     {
-        //
+        return view('vacantes/vacanteShow', compact('vacante'));
     }
 
     /**
