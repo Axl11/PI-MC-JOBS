@@ -37,14 +37,14 @@ class EmpleadoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombreEmpleado' => 'required|max:50',
-            'apellidoEmpleado' => 'required|max:50',
-            'numeroSeguroSocialEmpleado' => 'required|max:11',
-            'puestoLaboralEmpleado' => 'required|max:30',
+            'nombreEmpleado' => 'required|string|max:50',
+            'apellidoEmpleado' => 'required|string|max:50',
+            'numeroSeguroSocialEmpleado' => 'required|string|max:11',
+            'puestoLaboralEmpleado' => 'required|string|max:30',
             'sueldoEmpleado' => 'required|min:0',
-            'rfcEmpleado' => 'required|max:13',
+            'rfcEmpleado' => 'required|string|max:13',
             'fechaNacimientoEmpleado' => 'required|date',
-            'curpEmpleado' => 'required|max:18',
+            'curpEmpleado' => 'required|string|max:18',
             'antiguedadEmpleado' => 'required|integer|min:0',
         ]);
 

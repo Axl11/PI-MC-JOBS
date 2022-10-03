@@ -10,7 +10,8 @@ class Empleado extends Model
     use HasFactory;
 
     public $timestamps = true;
-     protected $fillable = [
+
+    protected $fillable = [
         'nombreEmpleado',
         'apellidoEmpleado',
         'numeroSeguroSocialEmpleado',
@@ -20,4 +21,6 @@ class Empleado extends Model
         'fechaNacimientoEmpleado',
         'curpEmpleado',
         'antiguedadEmpleado'];
+
+    /* protected $guarded = ['id']; */
 }

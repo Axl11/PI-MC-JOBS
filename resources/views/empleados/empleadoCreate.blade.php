@@ -22,32 +22,32 @@
     <form action="/empleado" method="POST">
     @csrf
         <label for="nombreEmpleado">Nombre</label>
-            <input type="text" name="nombreEmpleado" id="nombreEmpleado" autocomplete="off" required>
+            <input type="text" name="nombreEmpleado" id="nombreEmpleado" placeholder="Ingresa el nombre del empleado" autocomplete="off" required>
         </br>
         <label for="apellidoEmpleado">Apellido</label>
-            <input type="text" name="apellidoEmpleado" id="apellidoEmpleado" autocomplete="off" required>
+            <input type="text" name="apellidoEmpleado" id="apellidoEmpleado" placeholder="Ingresa el apellido del empleado" autocomplete="off" required>
         </br>
         <label for="numeroSeguroSocialEmpleado">Numero de Seguro Social</label>
-            <input type="text" name="numeroSeguroSocialEmpleado" id="numeroSeguroSocialEmpleado" autocomplete="off" required>
+            <input type="text" name="numeroSeguroSocialEmpleado" id="numeroSeguroSocialEmpleado" placeholder="Ingresa el Número de Seguro Social del Empleado" autocomplete="off" required>
         </br>
         <label for="puestoLaboralEmpleado">Puesto Laboral</label>
-            <input type="text" name="puestoLaboralEmpleado" id="puestoLaboralEmpleado" autocomplete="off" required>
+            <input type="text" name="puestoLaboralEmpleado" id="puestoLaboralEmpleado" placeholder="Ingresa el puesto laboral del Empleado" autocomplete="off" required>
         </br>
         <label for="sueldoEmpleado">Sueldo</label>
-            <input type="number" name="sueldoEmpleado" id="sueldoEmpleado" step="0.01" min="0" max="999999" autocomplete="off" required>
+            <input type="number" name="sueldoEmpleado" id="sueldoEmpleado" step="0.01" min="0" max="999999" placeholder="Ingresa el Sueldo del Empleado" autocomplete="off" required>
         </br>
         <label for="rfcEmpleado">Registro Federal de Contribuyente</label>
-            <input type="text" name="rfcEmpleado" id="rfcEmpleado" autocomplete="off" required>
+            <input type="text" name="rfcEmpleado" id="rfcEmpleado" placeholder="Ingresa el RFC del empleado" autocomplete="off" required>
         </br>
         <label for="fechaNacimientoEmpleado">Fecha Nacimiento</label>
             <input type="date" name="fechaNacimientoEmpleado" id="fechaNacimientoEmpleado" autocomplete="off" required>
         </br>
         <label for="curpEmpleado">CURP</label>
-            <input type="text" name="curpEmpleado" id="curpEmpleado" autocomplete="off" required>
+            <input type="text" name="curpEmpleado" id="curpEmpleado" placeholder="Ingresa la CURP del empleado" autocomplete="off" required>
         </br>
         <label for="antiguedadEmpleado">Antiguedad</label>
-            <input type="integer" name="antiguedadEmpleado" id="antiguedadEmpleado" autocomplete="off" required>
-        </br>
+            <input type="integer" name="antiguedadEmpleado" id="antiguedadEmpleado" placeholder="Ingresa la antiguedad del empleado" autocomplete="off" required>
+        </br></br>
 
         <button type="submit">Guardar</button>
 
