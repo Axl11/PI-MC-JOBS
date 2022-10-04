@@ -69,7 +69,7 @@ class VacanteController extends Controller
      */
     public function edit(Vacante $vacante)
     {
-        //
+        return view('vacantes/vacanteEdit', compact('vacante'));
     }
 
     /**
@@ -81,7 +81,18 @@ class VacanteController extends Controller
      */
     public function update(Request $request, Vacante $vacante)
     {
-        //
+        $request->validate([
+            'nombreVacante'=>'required|min:1|max:255',
+            'descripcionVacante'=>'required|min:10|max:255',
+            'sueldoVacante'=>'min:0',
+            'direccionVacante'=>'required|min:1|max:255',
+            'horarioVacante'=>'max:255',
+            'puestosDisponibles'=>'integer|min:0',
+        ]);
+        
+        Vacante::where('id', $vacante->id)->update($request->except('_token', '_method'));
+
+        return redirect('/vacante');
     }
 
     /**
@@ -92,6 +103,8 @@ class VacanteController extends Controller
      */
     public function destroy(Vacante $vacante)
     {
-        //
+        $vacante->delete();
+
+        return redirect('/vacante');
     }
 }

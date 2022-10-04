@@ -19,6 +19,8 @@
             <th>Dirección</th>
             <th>Horario</th>
             <th>Puestos disponibles</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach ($vacantes as $vacante)
             <tr>
@@ -32,6 +34,17 @@
                 <td>{{ $vacante->direccionVacante }}</td>
                 <td>{{ $vacante->horarioVacante }}</td>
                 <td>{{ $vacante->puestosDisponibles }}</td>
+                <td>
+                    <a href="/vacante/{{ $vacante->id }}/edit">Editar</a>
+                </td>
+                <td>
+                    <form action="/vacante/{{ $vacante->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <input type="submit" value="Eliminar">
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
