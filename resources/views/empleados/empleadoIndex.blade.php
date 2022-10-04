@@ -21,12 +21,16 @@
             <th>Fecha Nacimiento</th>
             <th>CURP</th>
             <th>Antiguedad</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach ($empleados as $empleado)
         <tr>
-            <td><a href="/empleado/{{ $empleado->id }}">
-            {{ $empleado->nombreEmpleado }}
-            </a></td>
+            <td>
+                <a href="/empleado/{{ $empleado->id }}">
+                    {{ $empleado->nombreEmpleado }}
+                </a>
+            </td>
             <td>{{ $empleado->apellidoEmpleado }}</td>
             <td>{{ $empleado->numeroSeguroSocialEmpleado }}</td>
             <td>{{ $empleado->puestoLaboralEmpleado }}</td>
@@ -35,6 +39,19 @@
             <td>{{ $empleado->fechaNacimientoEmpleado }}</td>
             <td>{{ $empleado->curpEmpleado }}</td>
             <td>{{ $empleado->antiguedadEmpleado }}</td>
+            <!-- Encabezado Editar -->
+            <td>
+                <a href="/empleado/{{ $empleado->id }}/edit">Editar</a>
+            </td>
+            <!-- Encabezado Eliminar -->
+            <td>
+                <form action="/empleado/{{ $empleado->id }}" method="post">
+                    @csrf
+                    @method('DELETE')
+
+                    <input type="submit" value="Borrar">
+                </form>
+            </td>
         </tr>
         @endforeach
         

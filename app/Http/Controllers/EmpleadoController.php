@@ -39,12 +39,12 @@ class EmpleadoController extends Controller
         $request->validate([
             'nombreEmpleado' => 'required|string|max:50',
             'apellidoEmpleado' => 'required|string|max:50',
-            'numeroSeguroSocialEmpleado' => 'required|string|max:11',
+            'numeroSeguroSocialEmpleado' => 'required|string|size:11',
             'puestoLaboralEmpleado' => 'required|string|max:30',
             'sueldoEmpleado' => 'required|min:0',
-            'rfcEmpleado' => 'required|string|max:13',
+            'rfcEmpleado' => 'required|string|min:12|max:13',
             'fechaNacimientoEmpleado' => 'required|date',
-            'curpEmpleado' => 'required|string|max:18',
+            'curpEmpleado' => 'required|string|size:18',
             'antiguedadEmpleado' => 'required|integer|min:0',
         ]);
 
@@ -72,7 +72,7 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        //
+        return view('empleados/empleadoEdit', compact('empleado'));
     }
 
     /**
@@ -84,7 +84,36 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
-        //
+        $request->validate([
+            'nombreEmpleado' => 'required|string|max:50',
+            'apellidoEmpleado' => 'required|string|max:50',
+            'numeroSeguroSocialEmpleado' => 'required|string|size:11',
+            'puestoLaboralEmpleado' => 'required|string|max:30',
+            'sueldoEmpleado' => 'required|min:0',
+            'rfcEmpleado' => 'required|string|min:12|max:13',
+            'fechaNacimientoEmpleado' => 'required|date',
+            'curpEmpleado' => 'required|string|size:18',
+            'antiguedadEmpleado' => 'required|integer|min:0',
+        ]);
+ 
+        // METODO 1: Update para la información nueva.
+
+        /* $empleado->nombreEmpleado = $request->nombreEmpleado;
+        $empleado->apellidoEmpleado = $request->apellidoEmpleado;
+        $empleado->numeroSeguroSocialEmpleado = $request->numeroSeguroSocialEmpleado;
+        $empleado->puestoLaboralEmpleado = $request->puestoLaboralEmpleado;
+        $empleado->sueldoEmpleado = $request->sueldoEmpleado;
+        $empleado->rfcEmpleado = $request->rfcEmpleado;
+        $empleado->fechaNacimientoEmpleado = $request->fechaNacimientoEmpleado;
+        $empleado->curpEmpleado = $request->curpEmpleado;
+        $empleado->antiguedadEmpleado = $request->antiguedadEmpleado;
+        $empleado->save(); */
+
+        // METODO 2: Update para la información nueva
+
+        Empleado::where('id', $empleado->id)->update($request->except('_token', '_method'));
+
+        return redirect('/empleado');
     }
 
     /**
@@ -95,6 +124,8 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
-        //
+        $empleado->delete();
+
+        return redirect('/empleado');
     }
 }
