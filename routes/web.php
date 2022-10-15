@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/vista', function () {
+    return view('empleados/empleadoVista');
+});
+
 Route::resource('empleado', EmpleadoController::class);
 
 Route::middleware([
