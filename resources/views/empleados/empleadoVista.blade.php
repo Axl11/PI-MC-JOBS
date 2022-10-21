@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 
-    @vite(['resources/css/bootstrap.min.css', 'resources/css/ejemplo/carousel.css'])
+    @vite(['resources/css/bootstrap.css', 'resources/css/ejemplo/carousel.css'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -16,7 +16,7 @@
 
     
 
-<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="resources/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <style>
       .bd-placeholder-img {
@@ -73,7 +73,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <!-- <link href="carousel.css" rel="stylesheet"> -->
   </head>
   <body>
     

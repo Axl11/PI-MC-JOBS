@@ -61,7 +61,8 @@ class EmpleadoController extends Controller
      */
     public function show(Empleado $empleado)
     {
-        return view('empleados/empleadoShow', compact('empleado'));
+        $empleados = Empleado::all();
+        return view('empleados/empleadoShow', compact('empleado', 'empleados'));
     }
 
     /**

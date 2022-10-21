@@ -1780,10 +1780,10 @@ progress {
 }
 
 .table-bordered > :not(caption) > * {
-  border-width: 1px 0;
+  border-width: 2px 0;
 }
 .table-bordered > :not(caption) > * > * {
-  border-width: 0 1px;
+  border-width: 0 2px;
 }
 
 .table-borderless > :not(caption) > * > * {
@@ -2941,6 +2941,23 @@ textarea.form-control-lg {
   --bs-btn-active-color: #000;
   --bs-btn-active-bg: #3dd5f3;
   --bs-btn-active-border-color: #25cff2;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #000;
+  --bs-btn-disabled-bg: #0dcaf0;
+  --bs-btn-disabled-border-color: #0dcaf0;
+}
+
+.btn-woox {
+  --bs-btn-color: #000;
+  --bs-btn-bg: #22b3c1;
+  --bs-btn-border-color: #22b3c1;
+  --bs-btn-hover-color: #000;
+  --bs-btn-hover-bg: #0d9daa;
+  --bs-btn-hover-border-color: #21b0cc;
+  --bs-btn-focus-shadow-rgb: 5, 60, 70;
+  --bs-btn-active-color: #000;
+  --bs-btn-active-bg: #3dd5f3;
+  --bs-btn-active-border-color: #21b0cc;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: #0dcaf0;
