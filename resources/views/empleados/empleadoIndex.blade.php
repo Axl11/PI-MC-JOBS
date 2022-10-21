@@ -1,27 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    @vite([
-        'resources/css/bootstrap.css', 
-        'resources/css/woox/animate.css',
-        'resources/css/woox/fontawesome.css',
-        'resources/css/woox/owl.css',
-        'resources/css/woox/templatemo-woox-travel.css',
-        'resources/js/bootstrap1.js',
-        'resources/js/woox/vendor/jquery.js',
-        'resources/js/woox/custom.js',
-        'resources/js/woox/isotope.js',
-        'resources/js/woox/owl-carousel.js',
-        'resources/js/woox/popup.js',
-        'resources/js/woox/tabs.js'
-    ])
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Empleados</title>
-</head>
-<body>
+
+<x-head titulo="Index empleados">
+
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -55,7 +36,7 @@
         <h1 class="text-dark pt-3">Listado de Empleados</h1>         
     </div>
     <div class="border-button pt-5 ps-4">
-        <a href="/empleado/create">Crear nueva vacante</a>
+        <a href="/empleado/create">Añadir nuevo empleado</a>
     </div>
     <div class="container-fluid mt-1 px-4">
         <div class="table-responsive">
@@ -111,8 +92,7 @@
         </div>
     </div>
 </section>
-
-<!--   <footer>
+<!-- <footer>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -121,7 +101,8 @@
         </div>
       </div>
     </div>
-  </footer> -->
+</footer> -->
 
-</body>
+</x-head>
+
 </html>
