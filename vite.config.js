@@ -9,6 +9,9 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/css/bootstrap.css',
                 'resources/js/bootstrap1.js',
+                'resources/css/bootstrap.min.css',
+                'resources/css/ejemplo/carousel.css',
+                /* Archivos Woox */
                 'resources/css/woox/animate.css',
                 'resources/css/woox/fontawesome.css',
                 'resources/css/woox/owl.css',
@@ -18,7 +21,7 @@ export default defineConfig({
                 'resources/js/woox/isotope.js',
                 'resources/js/woox/owl-carousel.js',
                 'resources/js/woox/popup.js',
-                'resources/js/woox/tabs.js'
+                'resources/js/woox/tabs.js',
             ],
             refresh: [
                 ...refreshPaths,

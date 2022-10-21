@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\VacanteController;
+use App\Models\Empleado;
+use App\Http\Controllers\EmpleadoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,19 @@ Route::get('/', function () {
 });
 
 Route::resource('vacante', VacanteController::class);
+
+//Ruta carousel
+Route::get('/vista', function () {
+    return view('empleados/empleadoVista');
+});
+
+// Ruta Woox
+Route::get('/woox', function () {
+    return view('empleados/empleadoWoox');
+});
+
+Route::resource('empleado', EmpleadoController::class);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
