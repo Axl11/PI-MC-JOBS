@@ -25,33 +25,7 @@
 
 </head>
 <body>
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="" class="logo">
-                            <img src="assets/images/logo.png" alt="">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="" class="active">Inicio</a></li>
-                            <li><a href="">Sobre nosotros</a></li>
-                            <li><a href="">Vacantes</a></li>
-                            <li><a href="">Contacto</a></li>
-                            <li><a href="">Nada</a></li>
-                        </ul>   
-                        <a class='menu-trigger'>
-                            <span>Vacantes</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+    <x-navbar></x-navbar>
 
     <div class="container mt-5 pt-5">
         <div class="text-center">
@@ -161,5 +135,20 @@
             </div>
         </div>
     </div>
+    <script>
+    function bannerSwitcher() {
+      next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+      if (next.length) next.prop('checked', true);
+      else $('.sec-1-input').first().prop('checked', true);
+    }
+
+    var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+    $('nav .controls label').click(function() {
+      clearInterval(bannerTimer);
+      bannerTimer = setInterval(bannerSwitcher, 5000)
+    });
+  </script>
+
 </body>
 </html>

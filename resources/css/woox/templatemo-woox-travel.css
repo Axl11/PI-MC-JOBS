@@ -446,7 +446,7 @@ Header Style
 
 .header-area .main-nav .menu-trigger {
   cursor: pointer;
-  display: block;
+  display: none;
   position: absolute;
   top: 33px;
   width: 32px;
@@ -627,7 +627,7 @@ Header Style
     margin-left: 0px;
   }
   .header-area .menu-trigger {
-    display: block !important;
+    display: block;
   }
   .header-area .main-nav {
     overflow: hidden;
