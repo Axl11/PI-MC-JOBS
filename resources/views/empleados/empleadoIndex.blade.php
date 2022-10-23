@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<x-head titulo="Index empleados">
+<x-head titulo="Index Empleados">
 
 <x-navbar></x-navbar>
 <div class="container mt-5 pt-5">
