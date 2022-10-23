@@ -5,20 +5,20 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="/vacante" class="logo">
-                        <img src="assets/images/logo.png" alt="MC-JOBS">
+                        <img src="{{URL::asset('images/logomcjobs3.png')}}" alt="MC-JOBS">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="">Inicio</a></li>
+                        <li><a href="">Sobre nosotros</a></li>
+                        <li><a href="/vacante">Vacantes</a></li>
+                        <li><a href="/empleado">Empleados</a></li>
+                        <li><a href="">Contacto</a></li>
+                    </ul>   
                     <a class="menu-trigger">
                         <span>Menu</span>
                     </a>
-                    <ul class="nav">
-                        <li><a href="" class="active">Inicio</a></li>
-                        <li><a href="">Sobre nosotros</a></li>
-                        <li><a href="">Vacantes</a></li>
-                        <li><a href="">Contacto</a></li>
-                        <li><a href="">Nada</a></li>
-                    </ul>   
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>

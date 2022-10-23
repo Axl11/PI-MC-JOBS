@@ -1,30 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vacante Index</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-    @vite([
-        'resources/css/bootstrap.css', 
-        'resources/css/woox/animate.css',
-        'resources/css/woox/fontawesome.css',
-        'resources/css/woox/owl.css',
-        'resources/css/woox/templatemo-woox-travel.css',
-        'resources/js/bootstrap1.js',
-        'resources/js/woox/vendor/jquery.js',
-        'resources/js/woox/custom.js',
-        'resources/js/woox/isotope.js',
-        'resources/js/woox/owl-carousel.js',
-        'resources/js/woox/popup.js',
-        'resources/js/woox/tabs.js'
-    ])
-
-</head>
-<body>
+<x-head titulo="Index Vacantes">
+    
     <x-navbar></x-navbar>
 
     <div class="container mt-5 pt-5">
@@ -84,7 +62,7 @@
             </div>
         </div>
     </div>
-    <div class="visit-country">
+    <!-- <div class="visit-country">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -134,21 +112,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-    function bannerSwitcher() {
-      next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
-      if (next.length) next.prop('checked', true);
-      else $('.sec-1-input').first().prop('checked', true);
-    }
+    </div> -->
 
-    var bannerTimer = setInterval(bannerSwitcher, 5000);
-
-    $('nav .controls label').click(function() {
-      clearInterval(bannerTimer);
-      bannerTimer = setInterval(bannerSwitcher, 5000)
-    });
-  </script>
-
-</body>
+</x-head>
 </html>

@@ -1,31 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Vacante</title>
+    
+<x-head titulo="Create vacante">
 
-    @vite([
-        'resources/css/bootstrap.css', 
-        'resources/css/woox/animate.css',
-        'resources/css/woox/fontawesome.css',
-        'resources/css/woox/owl.css',
-        'resources/css/woox/templatemo-woox-travel.css',
-        'resources/js/bootstrap1.js',
-        'resources/js/woox/vendor/jquery.js',
-        'resources/js/woox/custom.js',
-        'resources/js/woox/isotope.js',
-        'resources/js/woox/owl-carousel.js',
-        'resources/js/woox/popup.js',
-        'resources/js/woox/tabs.js'
-    ])
-
-</head>
-<body>
     <x-navbar></x-navbar>
-
-    <div class="reservation-form">
+    
+    <div class="reservation-form" style="background-image: url('/images/paisajecreate.jpg'); background-size: cover;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -47,7 +27,7 @@
                             <div class="col-lg-6">
                                 <fieldset>
                                     <label for="nombreVacante" class="form-label">Nombre</label></br>
-                                    <input type="text" name="nombreVacante" id="nombreVacante" value="{{ old('nombreVacante') }}" autocomplete="off" required>
+                                        <input type="text" name="nombreVacante" id="nombreVacante" value="{{ old('nombreVacante') }}" autocomplete="off" required>
                                     </br>
                                 </fieldset>
                             </div>
@@ -97,5 +77,5 @@
             </div>
         </div>
     </div>
-</body>
+</x-head>
 </html>

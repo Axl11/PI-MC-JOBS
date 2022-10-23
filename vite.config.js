@@ -16,7 +16,7 @@ export default defineConfig({
                 'resources/css/woox/fontawesome.css',
                 'resources/css/woox/owl.css',
                 'resources/css/woox/templatemo-woox-travel.css',
-
+                
                 'resources/js/woox/vendor/jquery.js',
                 'resources/js/woox/custom.js',
                 'resources/js/woox/isotope.js',
