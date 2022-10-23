@@ -10,7 +10,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="">Inicio</a></li>
+                        <li><a href="/">Inicio</a></li>
                         <li><a href="">Sobre nosotros</a></li>
                         <li><a href="/vacante">Vacantes</a></li>
                         <li><a href="/empleado">Empleados</a></li>
