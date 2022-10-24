@@ -3,6 +3,7 @@
 use App\Http\Controllers\VacanteController;
 use App\Models\Empleado;
 use App\Http\Controllers\EmpleadoController;
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::get('/woox', function () {
 });
 
 Route::resource('empleado', EmpleadoController::class);
+
+Route::resource('empresa', EmpresaController::class);
 
 Route::middleware([
     'auth:sanctum',

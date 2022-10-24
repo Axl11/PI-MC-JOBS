@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<x-head titulo="Create empleados">
+<x-head titulo="Crear Empleados">
 
-    <div style="background-image: url('/images/paisajecreate.jpg'); background-size: cover;">
+    <div style="background-image: url('/images/fondo1Create.jpg'); background-size: cover;">
 
         <x-navbar></x-navbar>
 
