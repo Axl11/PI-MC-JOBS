@@ -101,7 +101,7 @@ class VacanteController extends Controller
             'direccionVacante'=>'required|min:1|max:255',
             'horarioVacante'=>'max:255',
             'puestosDisponibles'=>'integer|min:0',
-            'empresa_id' => 'required|exists:vacantes,id',
+            'empresa_id' => 'required|exists:empresas,id',
         ]);
         
         Vacante::where('id', $vacante->id)->update($request->except('_token', '_method'));
