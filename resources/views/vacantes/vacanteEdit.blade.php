@@ -41,7 +41,7 @@
                                         </br>
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <fieldset>
                                         <label for="empresa_id">Selecciona una opción:</label></br>
                                             <select name="empresa_id" id="empresa_id" class="form-control" required>
