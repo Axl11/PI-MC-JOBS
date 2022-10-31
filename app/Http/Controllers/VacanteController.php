@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Vacante;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 
 class VacanteController extends Controller
@@ -29,7 +30,9 @@ class VacanteController extends Controller
      */
     public function index()
     {
+        //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Index
         $vacantes = Vacante::all();
+
         return view('vacantes/vacanteIndex', compact('vacantes'));
     }
 
@@ -40,7 +43,10 @@ class VacanteController extends Controller
      */
     public function create()
     {
-        return view('vacantes/vacanteCreate');
+        //Se asignan en 'empresas' todas las instancias del modelo Empresa y se mandan a la vista Create
+        $empresas = Empresa::all();
+
+        return view('vacantes/vacanteCreate', compact('empresas'));
     }
 
     /**
@@ -58,6 +64,7 @@ class VacanteController extends Controller
             'direccionVacante'=>'required|min:1|max:255',
             'horarioVacante'=>'max:255',
             'puestosDisponibles'=>'integer|min:0',
+            'empresa_id' => 'required|exists:empresas,id',
         ]);
 
         Vacante::create($request->all());
@@ -73,7 +80,10 @@ class VacanteController extends Controller
      */
     public function show(Vacante $vacante)
     {
-        return view('vacantes/vacanteShow', compact('vacante'));
+        //Se asignan en 'empresas' todas las instancias del modelo Empresa y se mandan a la vista Show
+        $empresas = Empresa::all();
+
+        return view('vacantes/vacanteShow', compact('vacante', 'empresas'));
     }
 
     /**
@@ -84,7 +94,10 @@ class VacanteController extends Controller
      */
     public function edit(Vacante $vacante)
     {
-        return view('vacantes/vacanteEdit', compact('vacante'));
+        //Se asignan en 'empresas' todas las instancias del modelo Empresa y se mandan a la vista Edit
+        $empresas = Empresa::all();
+
+        return view('vacantes/vacanteEdit', compact('vacante', 'empresas'));
     }
 
     /**
@@ -103,6 +116,7 @@ class VacanteController extends Controller
             'direccionVacante'=>'required|min:1|max:255',
             'horarioVacante'=>'max:255',
             'puestosDisponibles'=>'integer|min:0',
+            'empresa_id' => 'required|exists:empresas,id',
         ]);
         
         Vacante::where('id', $vacante->id)->update($request->except('_token', '_method'));
