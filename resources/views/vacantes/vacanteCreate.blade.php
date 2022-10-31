@@ -40,6 +40,17 @@
                                         </br>
                                     </fieldset>
                                 </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <label for="empresa_id" class="form-label">Selecciona una opción:</label>
+                                        <select name="empresa_id" id="empresa_id" value="{{ old('empresa_id')}}" class="form-control" required>
+                                            <option selected disabled>Selecciona una empresa</option>
+                                            @foreach ($empresas as $empresa)
+                                                <option value="{{ $empresa->id }}">{{ $empresa->nombreEmpresa }}</option>
+                                            @endforeach
+                                        </select>
+                                    </fieldset>
+                                </div>
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <label for="sueldoVacante" class="form-label">Sueldo</label></br>

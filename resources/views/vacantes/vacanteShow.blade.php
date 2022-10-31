@@ -24,6 +24,9 @@
                     <p>{{ $vacante->descripcionVacante }}</p>
                     <ul class="info">
                         <li>
+                            <label class="fw-bold" for="empresa_id">Empresa: </label><br>
+                            <i class="fa-solid fa-business-time"></i>  {{ $vacante->empresa->nombreEmpresa }}</li>
+                        <li>
                             <label class="fw-bold" for="domicilio">Domicilio: </label><br>
                             <i class="fa-solid fa-house"></i>  {{ $vacante->direccionVacante }}</li>
                         <li>

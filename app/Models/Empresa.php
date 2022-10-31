@@ -17,4 +17,12 @@ class Empresa extends Model
     ];
 
     /* protected $guarded = ['id']; */
+
+    /* Una Empresa puede tener muchas Vacantes
+    Se relaciona desde una Empresa sus Vacantes, 
+    la cual tiene muchas instancias del modelo Vacante */
+    public function vacantes()
+    {
+        return $this->hasMany(Vacante::class);
+    }
 }

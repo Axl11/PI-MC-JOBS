@@ -21,6 +21,7 @@
                             <tr class="text-center">
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
+                                <th scope="col">Empresa</th>
                                 <th scope="col">Sueldo</th>
                                 <th scope="col">Dirección</th>
                                 <th scope="col">Horario</th>
@@ -38,6 +39,7 @@
                                     </a>
                                 </td>
                                 <td>{{ $vacante->descripcionVacante }}</td>
+                                <td>{{ $vacante->empresa->nombreEmpresa }}</td>
                                 <td>{{ $vacante->sueldoVacante }}</td>
                                 <td>{{ $vacante->direccionVacante }}</td>
                                 <td>{{ $vacante->horarioVacante }}</td>
