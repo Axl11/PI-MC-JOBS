@@ -7,6 +7,22 @@ use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
+
+    /* 
+        La siguiente funcion es para validar si el usuario está logeado o no. 
+
+        En caso de no estar logeado con una cuenta, no se le permitirá acceder 
+        a los metodos de create, store, edit, update y delete, pero al index y al
+        metodo show si podrá tener acceso. 
+
+        En caso de estar logeado, tendrá acceso a todos los metodos disponibles en
+        este controlador.
+    */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
