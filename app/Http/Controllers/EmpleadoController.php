@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departamento;
 use App\Models\Empleado;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,10 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        return view('empleados/empleadoCreate');
+        //Se asignan en 'departamentos' todas las instancias del modelo Departamento y se mandan a la vista Create
+        $departamentos = Departamento::all();
+
+        return view('empleados/empleadoCreate', compact('departamentos'));
     }
 
     /**
@@ -64,7 +68,11 @@ class EmpleadoController extends Controller
             'antiguedadEmpleado' => 'required|integer|min:0',
         ]);
 
-        Empleado::create($request->all());
+        $empleado = Empleado::create($request->all());
+
+        /*Entramos a la instancia "empleado" en su método "departamentos" 
+            para tener acceso vincular el empleado con los departamentos*/
+        $empleado->departamentos()->attach($request->departamentos_id);
 
         return redirect('/empleado');
     }

@@ -23,4 +23,12 @@ class Empleado extends Model
         'antiguedadEmpleado'];
 
     /* protected $guarded = ['id']; */
+
+    /* Un Empleado puede tener muchos Departamentos
+    Se relaciona desde un Empleado sus Departamentos, 
+    la cual tiene muchas instancias del modelo Departamento (relacion muchos a muchos)*/
+    public function departamentos()
+    {
+        return $this->belongsToMany(Departamento::class);
+    }
 }

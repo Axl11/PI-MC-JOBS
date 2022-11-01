@@ -20,8 +20,15 @@
                     </div>
                 </div>
                 <div class="col-6">
-                    <h2>{{ $empleado->nombreEmpleado }} {{ $empleado->apellidoEmpleado }}</h3>
+                    <h2>{{ $empleado->nombreEmpleado }} {{ $empleado->apellidoEmpleado }}</h2>
                     <p>{{ $empleado->puestoLaboralEmpleado }}</p>
+                    <h4>Departamentos:</h4>
+                    <!-- Se hace un recorrido de los departamentos vinculados a empleado y se imprime el atributo "nombreDepartamento" -->
+                    <ol>
+                        @foreach($empleado->departamentos as $departamento)
+                            <li>{{ $departamento->nombreDepartamento }}</li>
+                        @endforeach
+                    </ol>
                     <ul class="info">
                         <li>
                             <label class="fw-bold" for="numeroSeguroSocial">Número de Seguro Social: </label><br>
