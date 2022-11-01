@@ -20,9 +20,9 @@
                             <tr class="text-center">
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
-                                <th scope="col">NSS</th>
                                 <th scope="col">Puesto</th>
                                 <th scope="col">Sueldo</th>
+                                <th scope="col">NSS</th>
                                 <th scope="col">RFC</th>
                                 <th scope="col">Fecha Nacimiento</th>
                                 <th scope="col">CURP</th>
@@ -40,9 +40,9 @@
                                     </a>
                                 </td>
                                 <td>{{ $empleado->apellidoEmpleado }}</td>
-                                <td>{{ $empleado->numeroSeguroSocialEmpleado }}</td>
                                 <td>{{ $empleado->puestoLaboralEmpleado }}</td>
                                 <td>{{ $empleado->sueldoEmpleado }}</td>
+                                <td>{{ $empleado->numeroSeguroSocialEmpleado }}</td>
                                 <td>{{ $empleado->rfcEmpleado }}</td>
                                 <td>{{ $empleado->fechaNacimientoEmpleado }}</td>
                                 <td>{{ $empleado->curpEmpleado }}</td>

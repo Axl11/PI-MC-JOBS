@@ -15,6 +15,7 @@
                         <li><a href="/vacante">Vacantes</a></li>
                         <li><a href="/empleado">Empleados</a></li>
                         <li><a href="/empresa">Empresas</a></li>
+                        <li><a href="/departamento">Departamentos</a></li>
                         <!-- <li><a href="">Contacto</a></li> -->
                     </ul>   
                     <a class="menu-trigger">
