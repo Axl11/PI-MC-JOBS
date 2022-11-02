@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        //Aquí definidos nuestro repositorio de clases Seeder que deseamos ejecutar
+        $this->call(DepartamentosSeeder::class);
     }
 }
