@@ -139,9 +139,22 @@ class EmpleadoController extends Controller
 
         // METODO 2: Update para la información nueva
 
-        Empleado::where('id', $empleado->id)->update($request->except('_token', '_method'));
+        /* Actualiza la información de la tabla del empleado, exceptuando las columnas 'token', 'method' y 'departamentos_id'
+            Trabaja sobre la tabla Empleado */
+        Empleado::where('id', $empleado->id)->update($request->except('_token', '_method', 'departamentos_id'));
 
-        return redirect('/empleado');
+        /* Sirve para quitar relaciones directamente mandandole el id */
+        // $empleado->departamentos()->detach(1);
+        
+        /* Sincroniza la información que el usuario selecciona con respecto a lo que existe dentro de la base de datos
+            Trabaja sobre la tabla Pivote */
+        $empleado->departamentos()->sync($request->departamentos_id);
+
+        //Redirecciona a la ruta empleado (index)
+        // return redirect('/empleado');
+
+        //Redirecciona a la ruta show
+        return redirect()->route('empleado.update', $empleado->id);
     }
 
     /**
@@ -152,6 +165,10 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
+        /* Quitamos la relación que existe entre la tabla Empleado y el id de departamentos
+            Para que a nivel de base de datos no nos arroje error de llave violada */
+        $empleado->departamentos()->detach();
+
         $empleado->delete();
 
         return redirect('/empleado');

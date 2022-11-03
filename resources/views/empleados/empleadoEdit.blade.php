@@ -103,7 +103,7 @@
                                             <select name="departamentos_id[]" value="{{ old('departamento_id')}}" class="form-control" multiple>
                                                 <option selected disabled>Selecciona un departamento</option>
                                                 @foreach ($departamentos as $departamento)
-                                                    <option value="{{ $departamento->id }}"  {{ array_search($departamento_id, $empleado->departamentos->pluck('id')->toArray()) !== false ? 'selected' : '' }} >
+                                                    <option value="{{ $departamento->id }}"  {{ array_search($departamento->id, $empleado->departamentos->pluck('id')->toArray()) !== false ? 'selected' : '' }}>
                                                         {{ $departamento->nombreDepartamento }}
                                                     </option>
                                                 @endforeach
