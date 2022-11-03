@@ -98,7 +98,16 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-
+                                            <!-- Implementación de un select multiple que pasa un arreglo de la instancia departamentos al metodo stored del controlador empleado -->
+                                            <label for="departamento_id" class="form-label">Selecciona una opción:</label>
+                                            <select name="departamentos_id[]" value="{{ old('departamento_id')}}" class="form-control" multiple>
+                                                <option selected disabled>Selecciona un departamento</option>
+                                                @foreach ($departamentos as $departamento)
+                                                    <option value="{{ $departamento->id }}"  {{ array_search($departamento_id, $empleado->departamentos->pluck('id')->toArray()) !== false ? 'selected' : '' }} >
+                                                        {{ $departamento->nombreDepartamento }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </fieldset>
                                     </div>
 

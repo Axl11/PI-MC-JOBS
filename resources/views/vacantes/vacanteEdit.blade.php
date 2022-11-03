@@ -50,7 +50,6 @@
                                                     <option value="{{ $empresa->id }}" {{ $vacante->empresa->id == $empresa->id ? 'selected' : '' }}>{{ $empresa->nombreEmpresa }}</option>
                                                 @endforeach
                                             </select>
-                                        </br>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">

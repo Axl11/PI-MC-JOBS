@@ -97,7 +97,10 @@ class EmpleadoController extends Controller
      */
     public function edit(Empleado $empleado)
     {
-        return view('empleados/empleadoEdit', compact('empleado'));
+        //Se asignan en 'departamentos' todas las instancias del modelo Departamento y se mandan a la vista Edit
+        $departamentos = Departamento::all();
+
+        return view('empleados/empleadoEdit', compact('empleado', 'departamentos'));
     }
 
     /**
