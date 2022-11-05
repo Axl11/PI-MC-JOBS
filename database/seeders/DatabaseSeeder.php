@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         //Aquí definidos nuestro repositorio de clases Seeder que deseamos ejecutar
         $this->call(DepartamentosSeeder::class);
         $this->call(EmpleadosSeeder::class);
+        $this->call(EmpresasSeeder::class);
     }
 }
