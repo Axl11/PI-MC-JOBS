@@ -21,6 +21,7 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
                                 <th scope="col">Puesto</th>
+                                <th scope="col">Departamentos</th>
                                 <th scope="col">Sueldo</th>
                                 <th scope="col">NSS</th>
                                 <th scope="col">RFC</th>
@@ -41,6 +42,11 @@
                                 </td>
                                 <td>{{ $empleado->apellidoEmpleado }}</td>
                                 <td>{{ $empleado->puestoLaboralEmpleado }}</td>
+                                <td>
+                                    @foreach($empleado->departamentos as $departamento)
+                                        {{ $departamento->nombreDepartamento }}</br>
+                                    @endforeach
+                                </td>
                                 <td>{{ $empleado->sueldoEmpleado }}</td>
                                 <td>{{ $empleado->numeroSeguroSocialEmpleado }}</td>
                                 <td>{{ $empleado->rfcEmpleado }}</td>

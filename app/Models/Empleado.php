@@ -20,7 +20,8 @@ class Empleado extends Model
         'rfcEmpleado',
         'fechaNacimientoEmpleado',
         'curpEmpleado',
-        'antiguedadEmpleado'];
+        'antiguedadEmpleado'
+    ];
 
     /* protected $guarded = ['id']; */
 
