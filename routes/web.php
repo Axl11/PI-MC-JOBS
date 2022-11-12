@@ -24,16 +24,6 @@ Route::get('/', function () {
 
 Route::resource('vacante', VacanteController::class);
 
-//Ruta carousel
-Route::get('/vista', function () {
-    return view('empleados/empleadoVista');
-});
-
-// Ruta Woox
-Route::get('/woox', function () {
-    return view('empleados/empleadoWoox');
-});
-
 Route::resource('empleado', EmpleadoController::class);
 
 Route::resource('empresa', EmpresaController::class);

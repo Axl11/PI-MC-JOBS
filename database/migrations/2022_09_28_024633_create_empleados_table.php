@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('fechaNacimientoEmpleado');
             $table->string('curpEmpleado', 18);
             $table->unsignedInteger('antiguedadEmpleado')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
