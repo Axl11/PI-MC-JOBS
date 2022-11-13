@@ -30,6 +30,11 @@ Route::resource('empresa', EmpresaController::class);
 
 Route::resource('departamento', DepartamentoController::class);
 
+/** Las siguientes tres rutas pertenecen a Empleado, a la seccion de PAPELERA */
+Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);
+Route::delete('/empleados/papelera/{id}', [EmpleadoController::class, 'forcedelete']);
+Route::get('/empleados/{id}/restore', [EmpleadoController::class, 'recuperar']);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

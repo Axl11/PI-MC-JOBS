@@ -173,4 +173,46 @@ class EmpleadoController extends Controller
 
         return redirect('/empleado');
     }
+
+    /**
+     * El siguiente metodo es el encargado de recuperar la informacion de solo 
+     * los SoftDeletes y los envía por medio de una varible a la vista 
+     * PAPELERA
+     */
+
+    public function papelera()
+    {
+        $empleados = Empleado::onlyTrashed()->get();
+
+        return view('empleados/empleadoTrash', compact('empleados'));
+    }   
+
+    /**
+     * Este metodo hace una eliminación total del registro empleado,
+     * se busca el empleado por medio de su ID entre TODOS los registros
+     * y se hace un ForceDelete de este registro, para después redirigirnos
+     * a la vista INDEX
+     */
+
+    public function forcedelete($id)
+    {
+        $empleado = Empleado::withTrashed()->find($id);
+        $empleado->forceDelete();
+
+        return redirect('/empleados/papelera');
+    }
+
+     /**
+     * El metodo recuperar recibe un ID de un empleado, lo busca entre 
+     * TODOS los registros y aplica el metodo restore para actualizar la
+     * columna delete_at y hacer que aparezca de nuevo en la vista INDEX
+     */
+
+    public function recuperar($id)
+    {
+        $empleado = Empleado::withTrashed()->find($id);
+        $empleado->restore();
+
+        return redirect('/empleado');
+    }
 }
