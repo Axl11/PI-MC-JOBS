@@ -24,21 +24,16 @@ Route::get('/', function () {
 
 Route::resource('vacante', VacanteController::class);
 
-//Ruta carousel
-Route::get('/vista', function () {
-    return view('empleados/empleadoVista');
-});
-
-// Ruta Woox
-Route::get('/woox', function () {
-    return view('empleados/empleadoWoox');
-});
-
 Route::resource('empleado', EmpleadoController::class);
 
 Route::resource('empresa', EmpresaController::class);
 
 Route::resource('departamento', DepartamentoController::class);
+
+/** Las siguientes tres rutas pertenecen a Empleado, a la seccion de PAPELERA */
+Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);
+Route::delete('/empleados/papelera/{id}', [EmpleadoController::class, 'forcedelete']);
+Route::get('/empleados/{id}/restore', [EmpleadoController::class, 'recuperar']);
 
 Route::middleware([
     'auth:sanctum',

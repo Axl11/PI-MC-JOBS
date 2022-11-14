@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
-<x-head titulo="Index Empleados">
-
+<x-head titulo="Papelera Empleados">
+    
 <x-navbar></x-navbar>
+
 <div class="container mt-5 pt-5">
     <div class="text-center">
-        <h1 class="text-dark pt-3">Listado de Empleados</h1>         
+        <h1 class="text-dark pt-3">Papelera de Empleados</h1>         
     </div>
-    <div class="border-button ps-4 pe-4 my-3 d-flex ">
-        <a href="/empleado/create">Añadir nuevo empleado</a>
-        <a class="ms-auto" href="/empleados/papelera">PAPELERA</a>
+    <div class="border-button pt-5 ps-4">
+        <a href="/empleado">Regresar</a>
     </div>
     <div class="container-fluid mt-1 px-4">
         <div class="table-responsive">
@@ -29,8 +29,8 @@
                                 <th scope="col">Fecha Nacimiento</th>
                                 <th scope="col">CURP</th>
                                 <th scope="col">Antiguedad</th>
-                                <th scope="col">Editar</th>
-                                <th scope="col">Eliminar</th>
+                                <th scope="col">Restaurar</th>
+                                <th scope="col">Borrar</th>
                             </tr>
                         </thead>
                         @foreach ($empleados as $empleado)
@@ -55,14 +55,14 @@
                                 <td>{{ $empleado->curpEmpleado }}</td>
                                 <td>{{ $empleado->antiguedadEmpleado }}</td>
                                 <td>
-                                    <a class="btn btn-woox text-light" href="/empleado/{{ $empleado->id }}/edit">Editar</a>
+                                    <a class="btn btn-woox text-light" href="/empleados/{{ $empleado->id }}/restore">Restaurar</a>
                                 </td>
                                 <td>
-                                    <form action="/empleado/{{ $empleado->id }}" method="POST">
+                                    <form action="/empleados/papelera/{{ $empleado->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
-                                    <input type="submit" class="btn btn-danger" value="Eliminar">
+                                    <input type="submit" class="btn btn-danger" value="Borrar">
             
                                     </form>
                                 </td>
@@ -75,17 +75,6 @@
         </div>
     </div>
 </div>
-<!-- <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2036 <a href="#">WoOx Travel</a> Company. All rights reserved. 
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a> Distribution: <a href="https://themewagon.com target="_blank" >ThemeWagon</a></p>
-        </div>
-      </div>
-    </div>
-</footer> -->
 
 </x-head>
-
 </html>

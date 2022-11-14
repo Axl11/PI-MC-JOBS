@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('vacantes', function (Blueprint $table) {
             $table->foreignId('empresa_id')->constrained();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('vacantes', function (Blueprint $table) {
             $table->dropColumn('empresa_id');
+            $table->dropColumn('deleted_at');
         });
     }
 };
