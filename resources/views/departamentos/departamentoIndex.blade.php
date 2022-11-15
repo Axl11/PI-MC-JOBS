@@ -8,7 +8,7 @@
     <div class="text-center">
         <h1 class="text-dark pt-3">Listado de Departamentos</h1>         
     </div>
-    <div class="border-button pt-5 ps-4">
+    <div class="border-button ps-4 pe-4 my-3 d-flex">
         <a href="/departamento/create">Añadir nuevo Departamento</a>
     </div>
     <div class="container-fluid mt-1 px-4">

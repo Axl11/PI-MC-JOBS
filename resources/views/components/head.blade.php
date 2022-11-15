@@ -3,25 +3,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $titulo }}</title>
-
+    
     <script src="https://kit.fontawesome.com/21fe155778.js" crossorigin="anonymous"></script>
 
-    @vite([
-        'resources/css/bootstrap.css', 
-        'resources/css/woox/animate.css',
-        'resources/css/woox/fontawesome.css',
-        'resources/css/woox/owl.css',
-        'resources/css/woox/templatemo-woox-travel.css',
-        'resources/js/bootstrap1.js',
-        'resources/js/woox/vendor/jquery.js',
-        'resources/js/woox/custom.js',
-        'resources/js/woox/isotope.js',
-        'resources/js/woox/owl-carousel.js',
-        'resources/js/woox/popup.js',
-        'resources/js/woox/tabs.js'
-    ])
+    <link rel="stylesheet" href="{{ asset('assets/estilos.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/woox/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/woox/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/woox/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/woox/templatemo-woox-travel.css') }}">
+
     
 </head>
 <body>
     {{ $slot }}
+    <script src="{{ asset('assets/jquery.js') }}"></script>
+    <script src="{{ asset('assets/navbar.js') }}"></script>
+    <script src="{{ asset('assets/bootstrap1.js') }}"></script>
+    <script src="{{ asset('assets/woox/custom.js') }}"></script>
+    <script src="{{ asset('assets/woox/isotope.js') }}"></script>
+    <script src="{{ asset('assets/woox/owl-carousel.js') }}"></script>
+    <script src="{{ asset('assets/woox/popup.js') }}"></script>
+    <script src="{{ asset('assets/woox/tabs.js') }}"></script>
 </body>
