@@ -20,7 +20,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form id="reservation-form" action="/solicitude" method="POST">
+                        <form id="reservation-form" action="/solicitude" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-12">
@@ -77,7 +77,9 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-
+                                        <label for="archivo" class="form-label">CV</label></br>
+                                            <input type="file" name="archivo" id="archivo">
+                                        </br>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">

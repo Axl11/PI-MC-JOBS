@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Solicitude;
+use App\Models\Archivo;
 use App\Models\Vacante;
+use App\Models\Solicitude;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
 {
@@ -56,9 +58,27 @@ class SolicitudeController extends Controller
             'vacante_id' => 'required|exists:vacantes,id',
         ]);
 
-        Solicitude::create($request->all());
+        $solicitude = Solicitude::create($request->all());
 
-        return redirect('/solicitude');
+        // Validación de archivos //
+        if ($request->file('archivo')->isValid()) {
+            /** Se asigna en 'ubicacion' el path del archivo que se almacena dentro de la carpeta local 'solicitudes' */
+            $ubicacion = $request->archivo->store('solicitudes');
+
+            // Inicializamos un nuevo objeto Archivo //
+            $archivo = new Archivo();
+            // Le asignamos al atributo 'ubicacion' del modelo 'archivo' su ubicacion de almacenamiento //
+            $archivo->ubicacion = $ubicacion;
+            // Le asignamos al atributo 'nombreOriginal' del modelo 'archivo' una función que ayuda a obtener el nombre original del cliente //
+            $archivo->nombreOriginal = $request->archivo->getClientOriginalName();
+            // Le asignamos al atributo 'mime' del modelo 'archivo' un valor por default //
+            $archivo->mime = '';
+
+            // Guardamos el objeto 'archivo' con la relación a nivel modelo //
+            $solicitude->archivos()->save($archivo);
+        }
+        
+        return redirect('/solicitude');    
     }
 
     /**
@@ -125,5 +145,19 @@ class SolicitudeController extends Controller
         $solicitude->delete();
 
         return redirect('/solicitude');
+    }
+
+    /**
+     * Esta es una función que descarga un archivo almacenado,
+     * Se descarga el archivo desde la ubicación donde está dicho archivo
+     */
+
+    public function descargaArchivo(Archivo $archivo)
+    {
+        /**El método download() puede esperar dos parámetros:
+         * 1. La ubicación del archivo
+         * 2. El nombre con el que se va a descargar dicho archivo
+         */
+        return Storage::download($archivo->ubicacion, $archivo->nombreOriginal);
     }
 }

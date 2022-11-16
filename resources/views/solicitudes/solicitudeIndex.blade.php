@@ -27,6 +27,7 @@
                                 <th scope="col">Teléfono</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Vacante</th>
+                                <th scope="col">CV</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -46,6 +47,7 @@
                                 <td>{{ $solicitude->telefonoUser }}</td>
                                 <td>{{ $solicitude->correoUser }}</td>
                                 <td>{{ $solicitude->vacante->nombreVacante }}</td>
+                                <td>En desarrollo</td>
                                 <td>
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>
                                 </td>

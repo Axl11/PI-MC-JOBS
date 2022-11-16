@@ -33,6 +33,9 @@ Route::resource('departamento', DepartamentoController::class);
 
 Route::resource('solicitude', SolicitudeController::class);
 
+/**La siguiente ruta pertenece a Solicitude, sirve para descargar el ARCHIVO */
+Route::get('/descargaArchivoCV/{archivo}', [SolicitudeController::class, 'descargaArchivo'])->name('descargaArchivoCV');
+
 /** Las siguientes tres rutas pertenecen a Empleado, a la seccion de PAPELERA */
 Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);
 Route::delete('/empleados/papelera/{id}', [EmpleadoController::class, 'forcedelete']);

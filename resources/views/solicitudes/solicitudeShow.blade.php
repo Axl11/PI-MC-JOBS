@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="image">
-                        <img class="rounded" src="{{URL::asset('images/audifonos.jpg')}}" alt="No hay nada">
+                        <img class="rounded" src="{{URL::asset('images/showSolicitudes.jpg')}}" alt="Solicitudes">
                     </div>
                 </div>
                 <div class="col-6">
@@ -25,19 +25,30 @@
                     <ul class="info">
                         <li>
                             <label class="fw-bold" for="edad">Edad: </label><br>
-                            <i class="fa-solid fa-business-time"></i>  {{ $solicitude->edadUser }}</li>
+                            <i class="fa-solid fa-image-portrait"></i>  {{ $solicitude->edadUser }}</li>
                         <li>
                             <label class="fw-bold" for="ciudad">Ciudad: </label><br>
-                            <i class="fa-solid fa-house"></i>  {{ $solicitude->ciudadUser }}</li>
+                            <i class="fa-solid fa-city"></i>  {{ $solicitude->ciudadUser }}</li>
                         <li>
                             <label class="fw-bold" for="colonia">Colonia: </label><br>
-                            <i class="fa-solid fa-money-bill"></i>  {{ $solicitude->coloniaUser }}</li>
+                            <i class="fa-solid fa-house"></i>  {{ $solicitude->coloniaUser }}</li>
                         <li>
                             <label class="fw-bold" for="telefono">Teléfono: </label><br>
-                            <i class="fa-solid fa-clock"></i>  {{ $solicitude->telefonoUser }}</li>
+                            <i class="fa-solid fa-square-phone"></i> {{ $solicitude->telefonoUser }}</li>
                         <li>
                             <label class="fw-bold" for="correo">Correo electrónico: </label><br>
-                            <i class="fa-solid fa-user"></i>  {{ $solicitude->correoUser }}</li>
+                            <i class="fa-solid fa-at"></i>  {{ $solicitude->correoUser }}</li>
+                    </ul>
+
+                    <ul class="info">
+                        <li>
+                            <label class="fw-bold" for="archivo">Currículum Vitae: </label><br>
+                                @foreach ($solicitude->archivos as $archivo)
+                                    <i class="fa-solid fa-folder"></i> 
+                                    <a href="{{ route('descargaArchivoCV', $archivo) }}">{{ $archivo->nombreOriginal }}</a>
+                                @endforeach
+
+                        </li>   
                     </ul>
                 </div>
             </div>
