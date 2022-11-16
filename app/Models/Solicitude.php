@@ -18,6 +18,15 @@ class Solicitude extends Model
         'ciudadUser',
         'coloniaUser',
         'telefonoUser',
-        'correoUser'
+        'correoUser',
+        'vacante_id'
     ];
+
+    /* Una Solicitude puede ser asignada por una Vacante
+    Se relaciona desde una Solicitude su Vacante, 
+    la cual tiene una instancia del modelo Vacante */
+    public function vacante()
+    {
+        return $this->belongsTo(Vacante::class);
+    }
 }

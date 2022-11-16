@@ -81,6 +81,17 @@
                                         
                                     </fieldset>
                                 </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <label for="vacante_id">Selecciona una opción:</label></br>
+                                        <select name="vacante_id" id="vacante_id" class="form-control" required>
+                                            <option selected disabled>Selecciona una vacante</option>
+                                            @foreach($vacantes as $vacante)
+                                                <option value="{{ $vacante->id }}" {{ $solicitude->vacante->id == $vacante->id ? 'selected' : '' }}>{{ $vacante->nombreVacante }}</option>
+                                            @endforeach
+                                        </select>
+                                    </fieldset>
+                                </div>
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <div class="border-button">

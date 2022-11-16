@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('telefonoUser', 10);
             $table->string('correoUser');
             /* $table->binary('cvUser'); */
+            $table->foreignId('vacante_id')->constrained();
             $table->timestamps();
         });
     }

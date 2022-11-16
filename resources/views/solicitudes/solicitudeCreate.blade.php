@@ -77,7 +77,18 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-12">
+                                    <fieldset>
+                                        <label for="vacante_id" class="form-label">Selecciona una opción:</label>
+                                        <select name="vacante_id" id="vacante_id" value="{{ old('vacante_id')}}" class="form-control" required>
+                                            <option selected disabled>Selecciona una vacante</option>
+                                            @foreach ($vacantes as $vacante)
+                                                <option value="{{ $vacante->id }}">{{ $vacante->nombreVacante }}</option>
+                                            @endforeach
+                                        </select>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-6">

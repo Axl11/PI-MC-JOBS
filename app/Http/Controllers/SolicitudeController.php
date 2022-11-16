@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Solicitude;
+use App\Models\Vacante;
 use Illuminate\Http\Request;
 
 class SolicitudeController extends Controller
@@ -17,7 +18,10 @@ class SolicitudeController extends Controller
         //Se asignan en 'solicitudes' todas las instancias del modelo Solicitud y se mandan a la vista Index
         $solicitudes = Solicitude::all();
 
-        return view('solicitudes/solicitudeIndex', compact('solicitudes'));
+        //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Index
+        $vacantes = Vacante::all();
+
+        return view('solicitudes/solicitudeIndex', compact('solicitudes', 'vacantes'));
     }
 
     /**
@@ -27,10 +31,10 @@ class SolicitudeController extends Controller
      */
     public function create()
     {
-        //Se asignan en 'solicitudes' todas las instancias del modelo Solicitude y se mandan a la vista Create
-        $solicitudes = Solicitude::all();
+        //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Create
+        $vacantes = Vacante::all();
 
-        return view('solicitudes/solicitudeCreate', compact('solicitudes'));
+        return view('solicitudes/solicitudeCreate', compact('vacantes'));
     }
 
     /**
@@ -49,6 +53,7 @@ class SolicitudeController extends Controller
             'coloniaUser'=>'required|string|max:30',
             'telefonoUser'=>'required|string|digits:10',
             'correoUser' => 'required|email',
+            'vacante_id' => 'required|exists:vacantes,id',
         ]);
 
         Solicitude::create($request->all());
@@ -64,8 +69,10 @@ class SolicitudeController extends Controller
      */
     public function show(Solicitude $solicitude)
     {
+        //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Show
+        $vacantes = Vacante::all();
 
-        return view('solicitudes/solicitudeShow', compact('solicitude'));
+        return view('solicitudes/solicitudeShow', compact('solicitude', 'vacantes'));
     }
 
     /**
@@ -76,7 +83,10 @@ class SolicitudeController extends Controller
      */
     public function edit(Solicitude $solicitude)
     {
-        return view('solicitudes/solicitudeEdit', compact('solicitude'));
+        //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Edit
+        $vacantes = Vacante::all();
+
+        return view('solicitudes/solicitudeEdit', compact('solicitude', 'vacantes'));
     }
 
     /**
@@ -96,6 +106,7 @@ class SolicitudeController extends Controller
             'coloniaUser'=>'required|string|max:30',
             'telefonoUser'=>'required|string|digits:10',
             'correoUser' => 'required|email',
+            'vacante_id' => 'required|exists:vacantes,id',
         ]);
         
         Solicitude::where('id', $solicitude->id)->update($request->except('_token', '_method'));
