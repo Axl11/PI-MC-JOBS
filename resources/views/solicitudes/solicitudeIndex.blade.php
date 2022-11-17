@@ -10,7 +10,7 @@
             <h1 class="text-dark pt-3">Listado de Solicitudes</h1>         
         </div>
         <div class="border-button ps-4 pe-4 my-3 d-flex">
-            <a href="/solicitude/create">Crear nueva solicitud</a>
+            <a href="/solicitude/create">Añadir nueva solicitud</a>
         </div>
         <div class="container-fluid mt-1 px-4">
             <div class="table-responsive">

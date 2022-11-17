@@ -3,7 +3,7 @@
     
 <x-head titulo="Crear solicitudes">
 
-    <div style="background-image: url('/images/paisajecreate.jpg'); background-size: cover;">
+    <div style="background-image: url('/images/fondo1Create.jpg'); background-size: cover;">
 
         <x-navbar></x-navbar>
     

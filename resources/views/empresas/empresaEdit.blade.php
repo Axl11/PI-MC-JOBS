@@ -51,13 +51,13 @@
                                     <div class="col-lg-6">
                                         <fieldset>
                                             <div class="border-button">
-                                                <a href="/empresa">Cancelar</a>
+                                                <a href="/empresa">Cancelar cambios</a>
                                             </div>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                            <button type="submit">Guardar</button>
+                                            <button type="submit">Actualizar</button>
                                         </fieldset>
                                     </div>
                                 </div>
