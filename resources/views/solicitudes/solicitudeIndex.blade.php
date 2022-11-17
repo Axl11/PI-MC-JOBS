@@ -47,7 +47,11 @@
                                 <td>{{ $solicitude->telefonoUser }}</td>
                                 <td>{{ $solicitude->correoUser }}</td>
                                 <td>{{ $solicitude->vacante->nombreVacante }}</td>
-                                <td>En desarrollo</td>
+                                <td>
+                                    @foreach($solicitude->archivos as $archivo)
+                                        {{ $archivo->nombreOriginal }}</br>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>
                                 </td>

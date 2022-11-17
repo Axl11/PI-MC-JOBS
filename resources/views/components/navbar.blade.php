@@ -14,6 +14,7 @@
                     <a href="/empresa"><i class="fas fa-building contact"></i> Empresas</a>
                     <a href="/empleado"><i class="fas fa-users about"></i> Empleados</a>
                     <a href="/departamento"><i class="fas fa-user-tag contact"></i> Departamentos</a>
+                    <!-- <a href="/solicitude"><i class="fas fa-folder"></i> Solicitudes</a> -->
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <x-jet-dropdown-link href="{{ route('logout') }}"
