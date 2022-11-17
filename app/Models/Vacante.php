@@ -20,7 +20,7 @@ class Vacante extends Model
         'sueldoVacante', 
         'direccionVacante', 
         'horarioVacante', 
-        'puestosDisponibles'
+        'puestosDisponibles',
     ];
 
     /* Una Vacante puede ser asignada por una Empresa
@@ -29,5 +29,14 @@ class Vacante extends Model
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);
+    }
+
+    /* Una Vacante puede tener muchas Solicitudes
+    Se relaciona desde una Vacante sus Solicitudes, 
+    la cual tiene muchas instancias del modelo Solicitude 
+    (relacion 1:N) */
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitude::class);
     }
 }

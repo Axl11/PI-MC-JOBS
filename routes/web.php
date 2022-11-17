@@ -5,6 +5,7 @@ use App\Models\Empleado;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\SolicitudeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,11 @@ Route::resource('empleado', EmpleadoController::class);
 Route::resource('empresa', EmpresaController::class);
 
 Route::resource('departamento', DepartamentoController::class);
+
+Route::resource('solicitude', SolicitudeController::class);
+
+/**La siguiente ruta pertenece a Solicitude, sirve para descargar el ARCHIVO */
+Route::get('/descargaArchivoCV/{archivo}', [SolicitudeController::class, 'descargaArchivo'])->name('descargaArchivoCV');
 
 /** Las siguientes tres rutas pertenecen a Empleado, a la seccion de PAPELERA */
 Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);

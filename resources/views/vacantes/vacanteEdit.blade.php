@@ -89,7 +89,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <fieldset>
-                                        <button type="submit">Guardar</button>
+                                        <button type="submit">Actualizar</button>
                                     </fieldset>
                                 </div>
                             </div>

@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                            <!-- Implementación de un select multiple que pasa un arreglo de la instancia departamentos al metodo stored del controlador empleado -->
+                                            <!-- Implementación de un select multiple que pasa un arreglo de la instancia departamentos al metodo store del controlador empleado -->
                                             <label for="departamento_id" class="form-label">Selecciona una opción:</label>
                                             <select name="departamentos_id[]" value="{{ old('departamento_id')}}" class="form-control" multiple>
                                                 <option selected disabled>Selecciona un departamento</option>
@@ -114,13 +114,13 @@
                                     <div class="col-lg-6">
                                         <fieldset>
                                             <div class="border-button">
-                                                <a href="/empleado">Cancelar</a>
+                                                <a href="/empleado">Cancelar cambios</a>
                                             </div>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                            <button type="submit">Guardar</button>
+                                            <button type="submit">Actualizar</button>
                                         </fieldset>
                                     </div>
                                 </div>
