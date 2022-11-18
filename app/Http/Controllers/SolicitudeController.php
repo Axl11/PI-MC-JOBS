@@ -6,6 +6,7 @@ use App\Models\Archivo;
 use App\Models\Vacante;
 use App\Models\Solicitude;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
@@ -59,6 +60,12 @@ class SolicitudeController extends Controller
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
         ]);
+        
+        /**
+         * La sigueinte linea consiste en guardar un atributo que no viene directo del formulario
+         * en este caso sería el user_id que se obtiene de la sesion que está activa.
+         */
+        $request->merge(['user_id' => Auth::id()]);
 
         $solicitude = Solicitude::create($request->all());
 
