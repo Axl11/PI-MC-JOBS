@@ -714,7 +714,10 @@ Banner Style
   height: 100vh;
   min-height: 700px;
   color: #fff;
-  background-color: #222;
+  /* background-color: #222; */
+  background-image: url(/images/showEmpleado.jpg);
+  background-size: cover;
+  background-position: center;
   position: relative;
 }
 #section-1 .content-slider {
@@ -1063,7 +1066,7 @@ Call To Action Style
 
 .call-to-action {
   margin-top: 120px;
-  background-image: url(../images/cta-bg.jpg);
+  background-image: url(/images/showEmpresa.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1091,7 +1094,8 @@ Call To Action Style
 
 .call-to-action .border-button a {
   color: #fff;
-  border-color: #fff
+  border-color: #fff;
+  background-color: #22b3c1;
 }
 
 .call-to-action .border-button a:hover {

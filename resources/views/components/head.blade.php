@@ -20,13 +20,13 @@
     <script src="{{ asset('assets/jquery.js') }}"></script>
     <script src="{{ asset('assets/navbar.js') }}"></script>
     <script src="{{ asset('assets/bootstrap1.js') }}"></script>
-    <script src="{{ asset('assets/woox/custom.js') }}"></script>
     <script src="{{ asset('assets/woox/isotope.js') }}"></script>
     <script src="{{ asset('assets/woox/owl-carousel.js') }}"></script>
+    <script src="{{ asset('assets/woox/custom.js') }}"></script>
     <script src="{{ asset('assets/woox/popup.js') }}"></script>
     <script src="{{ asset('assets/woox/tabs.js') }}"></script>
 
-    <script>
+    <!-- <script>
         function bannerSwitcher() {
             next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
             if (next.length) next.prop('checked', true);
@@ -39,6 +39,6 @@
             clearInterval(bannerTimer);
             bannerTimer = setInterval(bannerSwitcher, 5000)
         });
-    </script>
+    </script> -->
 
 </body>
