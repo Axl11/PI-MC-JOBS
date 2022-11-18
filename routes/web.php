@@ -50,3 +50,4 @@ Route::middleware([
         return view('index');
     })->name('index');
 });
+//Las anteriores rutas eran /dashboard

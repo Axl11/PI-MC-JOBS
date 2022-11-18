@@ -31,7 +31,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        $empleados = Empleado::all();
+        //ACTUALIZACION *Solución al problema N+1* junto a empleados, también se hace una pre-carga de la tabla departamentos
+        $empleados = Empleado::with('departamentos')->get();
         return view('empleados/empleadoIndex', compact('empleados'));
     }
 

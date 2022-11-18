@@ -19,6 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/** La siguiente ruta genera una vista de todos los registros de la tabla empleados
+ * en formato JSON, solo debemos acceder como /api/empleados
+ */
 Route::get('/empleados', function (){
     return Empleado::all();
 });

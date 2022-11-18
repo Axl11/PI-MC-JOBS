@@ -18,7 +18,9 @@ class SolicitudeController extends Controller
     public function index()
     {
         //Se asignan en 'solicitudes' todas las instancias del modelo Solicitud y se mandan a la vista Index
-        $solicitudes = Solicitude::all();
+        $solicitudes = Solicitude::with('vacante', 'archivos')->get();
+        //ACTUALIZACION *Solución al problema N+1* junto a solicitudes, también se hace una pre-carga de la tabla vacante y 
+        //los archivos que estén vinculados a la solicitud
 
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Index
         $vacantes = Vacante::all();
