@@ -7,6 +7,7 @@ use App\Models\Vacante;
 use App\Models\Solicitude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
@@ -112,6 +113,11 @@ class SolicitudeController extends Controller
      */
     public function edit(Solicitude $solicitude)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('edita-solicitude', $solicitude)){
+            abort(403);
+        }
+        
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Edit
         $vacantes = Vacante::all();
 
@@ -151,6 +157,7 @@ class SolicitudeController extends Controller
      */
     public function destroy(Solicitude $solicitude)
     {
+        $this->authorize('delete', $solicitude);
         $solicitude->delete();
 
         return redirect('/solicitude');
