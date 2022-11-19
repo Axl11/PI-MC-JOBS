@@ -1,5 +1,12 @@
-<h1>Notificacion de tu Solicitud</h1>
+@component('mail::message')
+#Notifica Solicitud Registrada Exitosamente
 
-<p>
-    Tu solicitud {{$solicitude->id}} ha sido registrada.
-</p>
+Usuari@ {{ $solicitude->user->name }} la solicitud que realizo fue registrada de manera éxitosa.
+
+@component('mail::button', ['url' => route('solicitude.show', $solicitude)])
+Detalles Solicitud 
+@endcomponent
+
+Thanks, <br>
+{{ config('app.name') }}
+@endcomponent

@@ -29,6 +29,6 @@ class NotificaSolicitud extends Mailable
      */
     public function build()
     {
-        return $this->view('correos.notificaSolicitude');
+        return $this->markdown('correos.notificaSolicitude');
     }
 }
