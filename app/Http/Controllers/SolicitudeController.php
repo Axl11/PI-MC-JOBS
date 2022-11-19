@@ -6,6 +6,8 @@ use App\Models\Archivo;
 use App\Models\Vacante;
 use App\Models\Solicitude;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
@@ -18,7 +20,9 @@ class SolicitudeController extends Controller
     public function index()
     {
         //Se asignan en 'solicitudes' todas las instancias del modelo Solicitud y se mandan a la vista Index
-        $solicitudes = Solicitude::all();
+        $solicitudes = Solicitude::with('vacante', 'archivos')->get();
+        //ACTUALIZACION *Solución al problema N+1* junto a solicitudes, también se hace una pre-carga de la tabla vacante y 
+        //los archivos que estén vinculados a la solicitud
 
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Index
         $vacantes = Vacante::all();
@@ -57,6 +61,12 @@ class SolicitudeController extends Controller
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
         ]);
+        
+        /**
+         * La sigueinte linea consiste en guardar un atributo que no viene directo del formulario
+         * en este caso sería el user_id que se obtiene de la sesion que está activa.
+         */
+        $request->merge(['user_id' => Auth::id()]);
 
         $solicitude = Solicitude::create($request->all());
 
@@ -103,6 +113,11 @@ class SolicitudeController extends Controller
      */
     public function edit(Solicitude $solicitude)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('edita-solicitude', $solicitude)){
+            abort(403);
+        }
+        
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Edit
         $vacantes = Vacante::all();
 
@@ -142,6 +157,7 @@ class SolicitudeController extends Controller
      */
     public function destroy(Solicitude $solicitude)
     {
+        $this->authorize('delete', $solicitude);
         $solicitude->delete();
 
         return redirect('/solicitude');

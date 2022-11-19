@@ -31,7 +31,8 @@ class VacanteController extends Controller
     public function index()
     {
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Index
-        $vacantes = Vacante::all();
+        $vacantes = Vacante::with('empresa')->get();
+        //ACTUALIZACION *Solución al problema N+1* junto a vacante, también se hace una pre-carga de la tabla empresa 
 
         return view('vacantes/vacanteIndex', compact('vacantes'));
     }

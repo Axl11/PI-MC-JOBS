@@ -7,7 +7,7 @@
 
     <div class="container mt-5 pt-5">
         <div class="text-center">
-            <h1 class="text-dark pt-3">Listado de Solicitudes</h1>         
+            <h1 class="text-dark pt-3">Listado de Solicitudes: {{ \Auth::user()->name }}</h1>         
         </div>
         <div class="border-button ps-4 pe-4 my-3 d-flex">
             <a href="/solicitude/create">Añadir nueva solicitud</a>
@@ -56,12 +56,16 @@
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>
                                 </td>
                                 <td>
+                                    @can('delete', $solicitude)
                                     <form action="/solicitude/{{ $solicitude->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
                                     <input class="btn btn-danger" type="submit" value="Eliminar">
                                     </form>
+                                    @else
+                                    <p>Disabled</p>
+                                    @endcan
                                 </td>
                             </tr>
                         </tbody>

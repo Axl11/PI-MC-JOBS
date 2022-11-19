@@ -21,7 +21,8 @@ class Solicitude extends Model
         'coloniaUser',
         'telefonoUser',
         'correoUser',
-        'vacante_id'
+        'vacante_id',
+        'user_id'
     ];
 
     /* Una Solicitude puede ser asignada por una Vacante
@@ -39,5 +40,12 @@ class Solicitude extends Model
     public function archivos()
     {
         return $this->hasMany(Archivo::class);
+    }
+
+    /**Relacion uno a muchos (Un usuario puede hacer muchas solicitudes, 
+     * la solicitud solo pertenece aun empleado) */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
