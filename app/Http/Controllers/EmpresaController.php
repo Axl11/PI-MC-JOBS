@@ -59,7 +59,10 @@ class EmpresaController extends Controller
 
         Empresa::create($request->all());
 
-        return redirect('/empresa');
+        return redirect('/empresa')->with([
+            'mensaje' => 'Empresa añadida al sistema correctamente',
+            'alert_type' => 'alert-success'
+        ]);
     }
 
     /**

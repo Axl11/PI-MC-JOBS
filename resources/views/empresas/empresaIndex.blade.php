@@ -8,6 +8,9 @@
     <div class="text-center">
         <h1 class="text-dark pt-3">Listado de Empresas</h1>         
     </div>
+
+    <x-alert></x-alert>
+
     <div class="border-button ps-4 pe-4 my-3 d-flex">
         <a href="/empresa/create">Añadir nueva empresa</a>
     </div>

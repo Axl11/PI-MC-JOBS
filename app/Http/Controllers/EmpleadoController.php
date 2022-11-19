@@ -74,7 +74,10 @@ class EmpleadoController extends Controller
             para tener acceso vincular el empleado con los departamentos*/
         $empleado->departamentos()->attach($request->departamentos_id);
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with([
+            'mensaje' => 'Empleado creado con éxito',
+            'alert_type' => 'alert-success'
+        ]);
     }
 
     /**
@@ -171,7 +174,10 @@ class EmpleadoController extends Controller
 
         $empleado->delete();
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with([
+            'mensaje' => 'Empleado eliminado correctamente',
+            'alert_type' => 'alert-danger'
+        ]);
     }
 
     /**
