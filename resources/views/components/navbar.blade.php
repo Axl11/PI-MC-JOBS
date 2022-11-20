@@ -14,7 +14,9 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><a href="/vacante" class="dropdown-item">Vacantes</a></li>
-                    <li><a href="/solicitude" class="dropdown-item">Solicitudes</a></li>
+                    @auth
+                        <li><a href="/solicitude" class="dropdown-item">Solicitudes</a></li>
+                    @endauth
                 </ul>
             </div>
             @if (Route::has('login'))
