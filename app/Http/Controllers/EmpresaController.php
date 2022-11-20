@@ -60,8 +60,9 @@ class EmpresaController extends Controller
         Empresa::create($request->all());
 
         return redirect('/empresa')->with([
-            'mensaje' => 'Empresa añadida al sistema correctamente',
-            'alert_type' => 'alert-success'
+            'mensaje' => 'Empresa añadida al sistema correctamente.',
+            'alert_type' => 'alert-success',
+            'icon' => 'fa-solid fa-check'
         ]);
     }
 
@@ -97,6 +98,8 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, Empresa $empresa)
     {
+        $updateEmpresa = $empresa->id;
+        
         $request->validate([
             'nombreEmpresa' => 'required|string|max:50',
             'descripcionEmpresa' => 'required|string|min:2',
@@ -104,7 +107,11 @@ class EmpresaController extends Controller
 
         Empresa::where('id', $empresa->id)->update($request->except('_token', '_method'));
 
-        return redirect('/empresa');
+        return redirect('/empresa')->with([
+            'mensaje' => 'Datos de la Empresa '. $updateEmpresa .' actualizados correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-pen-to-square'
+        ]);
     }
 
     /**
@@ -115,8 +122,13 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
+        $deleteNameEmpresa = $empresa->nombreEmpresa;
         $empresa->delete();
 
-        return redirect('empresa');
+        return redirect('empresa')->with([
+            'mensaje' => 'La Empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.',
+            'alert_type' => 'alert-danger',
+            'icon' => 'fa-solid fa-eraser'
+        ]);
     }
 }

@@ -58,7 +58,11 @@ class DepartamentoController extends Controller
 
         Departamento::create($request->all());
 
-        return redirect('/departamento');
+        return redirect('/departamento')->with([
+            'mensaje' => 'Departamento añadido al sistema correctamente.',
+            'alert_type' => 'alert-success',
+            'icon' => 'fa-solid fa-check'
+        ]);
     }
 
     /**
@@ -93,6 +97,8 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, Departamento $departamento)
     {
+        $updateDepartamento = $departamento->id;
+
         $request->validate([
             'nombreDepartamento' => 'required|string|max:50',
             'descripcionDepartamento' => 'required|string|min:2',
@@ -100,7 +106,11 @@ class DepartamentoController extends Controller
 
         Departamento::where('id', $departamento->id)->update($request->except('_token', '_method'));
 
-        return redirect('/departamento');
+        return redirect('/departamento')->with([
+            'mensaje' => 'Datos del Departamento '. $updateDepartamento .' actualizados correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-pen-to-square'
+        ]);
     }
 
     /**
@@ -111,8 +121,13 @@ class DepartamentoController extends Controller
      */
     public function destroy(Departamento $departamento)
     {
+        $deleteName = $departamento->nombreDepartamento;
         $departamento->delete();
 
-        return redirect('departamento');
+        return redirect('departamento')->with([
+            'mensaje' => 'El Departamento '. $deleteName .' ha sido eliminado del sistema correctamente.',
+            'alert_type' => 'alert-danger',
+            'icon' => 'fa-solid fa-eraser'
+        ]);
     }
 }

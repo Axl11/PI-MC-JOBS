@@ -9,6 +9,9 @@
         <div class="text-center">
             <h1 class="text-dark pt-3">Listado de Vacantes</h1>         
         </div>
+
+        <x-alert></x-alert>
+        
         <div class="border-button ps-4 pe-4 my-3 d-flex">
             <a href="/vacante/create">Añadir nueva vacante</a>
         </div>
