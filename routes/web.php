@@ -41,6 +41,8 @@ Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);
 Route::delete('/empleados/papelera/{id}', [EmpleadoController::class, 'forcedelete']);
 Route::get('/empleados/{id}/restore', [EmpleadoController::class, 'recuperar']);
 
+Route::get('/solicitud/notifica/{solicitude}', [SolicitudeController::class, 'notificarSolicitud']);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -28,6 +28,7 @@
                                 <th scope="col">Correo</th>
                                 <th scope="col">Vacante</th>
                                 <th scope="col">CV</th>
+                                <th scope="col">Acción</th>
                                 <th scope="col">Editar</th>
                                 <th scope="col">Eliminar</th>
                             </tr>
@@ -51,6 +52,9 @@
                                     @foreach($solicitude->archivos as $archivo)
                                         {{ $archivo->nombreOriginal }}</br>
                                     @endforeach
+                                </td>
+                                <td>
+                                    <a href="/solicitud/notifica/{{ $solicitude->id }}">Enviar Correo</a>
                                 </td>
                                 <td>
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>

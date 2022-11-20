@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificaSolicitud;
 use App\Models\Archivo;
 use App\Models\Vacante;
 use App\Models\Solicitude;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
@@ -175,5 +177,12 @@ class SolicitudeController extends Controller
          * 2. El nombre con el que se va a descargar dicho archivo
          */
         return Storage::download($archivo->ubicacion, $archivo->nombreOriginal);
+    }
+
+    public function notificarSolicitud(Solicitude $solicitude)
+    {
+        Mail::to($solicitude->user->email)->send(new NotificaSolicitud($solicitude));
+
+        return back();
     }
 }
