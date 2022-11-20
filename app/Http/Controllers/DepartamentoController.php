@@ -125,9 +125,7 @@ class DepartamentoController extends Controller
         $departamento->delete();
 
         return redirect('departamento')->with([
-            'mensaje' => 'El Departamento '. $deleteName .' ha sido eliminado del sistema correctamente.',
-            'alert_type' => 'alert-danger',
-            'icon' => 'fa-solid fa-eraser'
+            'delete' => 'El Departamento '. $deleteName .' ha sido eliminado del sistema correctamente.'
         ]);
     }
 }

@@ -185,9 +185,7 @@ class EmpleadoController extends Controller
         $empleado->delete();
 
         return redirect('/empleado')->with([
-            'mensaje' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido eliminado del sistema correctamente.',
-            'alert_type' => 'alert-danger',
-            'icon' => 'fa-solid fa-eraser'
+            'delete' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido eliminado del sistema correctamente.'
         ]);
     }
 

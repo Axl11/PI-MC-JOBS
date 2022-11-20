@@ -157,9 +157,7 @@ class SolicitudeController extends Controller
         $solicitude->delete();
 
         return redirect('/solicitude')->with([
-            'mensaje' => 'La Solicitud del usuario '. $deleteNameSolicitude . $deleteApellidoSolicitude .' ha sido eliminada del sistema correctamente.',
-            'alert_type' => 'alert-danger',
-            'icon' => 'fas fa-check'
+            'delete' => 'La Solicitud del usuario '. $deleteNameSolicitude . $deleteApellidoSolicitude .' ha sido eliminada del sistema correctamente.'
         ]);
     }
 

@@ -126,9 +126,7 @@ class EmpresaController extends Controller
         $empresa->delete();
 
         return redirect('empresa')->with([
-            'mensaje' => 'La Empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.',
-            'alert_type' => 'alert-danger',
-            'icon' => 'fa-solid fa-eraser'
+            'delete' => 'La Empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.'
         ]);
     }
 }

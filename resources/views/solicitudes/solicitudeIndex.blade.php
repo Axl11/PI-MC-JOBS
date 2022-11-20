@@ -59,7 +59,7 @@
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="/solicitude/{{ $solicitude->id }}" method="POST">
+                                    <form class="formulario-eliminar" action="/solicitude/{{ $solicitude->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

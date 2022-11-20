@@ -146,9 +146,7 @@ class VacanteController extends Controller
         $vacante->delete();
 
         return redirect('/vacante')->with([
-            'mensaje' => 'La Vacante '. $deleteNameVacante .' ha sido eliminada del sistema correctamente.',
-            'alert_type' => 'alert-danger',
-            'icon' => 'fa-solid fa-eraser'
+            'delete' => 'La Vacante '. $deleteNameVacante .' ha sido eliminada del sistema correctamente.'
         ]);
     }
 }
