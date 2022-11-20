@@ -20,6 +20,7 @@
     <script src="{{ asset('assets/jquery.js') }}"></script>
     <script src="{{ asset('assets/navbar.js') }}"></script>
     <script src="{{ asset('assets/bootstrap1.js') }}"></script>
+    <!-- <script src="{{ asset('assets/bootstrap.bundle.min.js') }}"></script> -->
     <script src="{{ asset('assets/woox/isotope.js') }}"></script>
     <script src="{{ asset('assets/woox/owl-carousel.js') }}"></script>
     <script src="{{ asset('assets/woox/custom.js') }}"></script>

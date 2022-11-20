@@ -8,7 +8,15 @@
         <!-- ***** Menu Start ***** -->
         <nav class="navigation-menu">
             <a href="/"><i class="fas fa-home home"></i> Inicio</a>
-            <a href="/vacante"><i class="fas fa-suitcase works"></i> Vacantes</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-suitcase works"></i> Vacantes
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a href="/vacante" class="dropdown-item">Vacantes</a></li>
+                    <li><a href="/solicitude" class="dropdown-item">Solicitudes</a></li>
+                </ul>
+            </div>
             @if (Route::has('login'))
                 @auth
                     <a href="/empresa"><i class="fas fa-building contact"></i> Empresas</a>

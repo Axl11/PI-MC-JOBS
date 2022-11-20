@@ -77,6 +77,10 @@ header{
     cursor: pointer;
 }
 
+/* .dropdown:hover .dropdown-menu{
+    display: block;
+} */
+
 @media screen and (max-width:1250px) {
     .menu-toggle-btn{
         display: block !important;
