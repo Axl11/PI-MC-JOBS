@@ -134,6 +134,50 @@ class VacanteController extends Controller
     public function destroy(Vacante $vacante)
     {
         $vacante->delete();
+        //Elimina todos los registros de Solicitude relacionados a la Vacante, esto porque existen softDeletes
+        $vacante->solicitudes()->delete();
+
+        return redirect('/vacante');
+    }
+
+    /**
+     * El siguiente metodo es el encargado de recuperar la informacion de solo 
+     * los SoftDeletes y los envía por medio de una varible a la vista 
+     * PAPELERA
+     */
+
+    public function papelera()
+    {
+        $vacantes = Vacante::onlyTrashed()->get();
+
+        return view('vacantes/vacanteTrash', compact('vacantes'));
+    }   
+
+    /**
+     * Este metodo hace una eliminación total del registro empleado,
+     * se busca el empleado por medio de su ID entre TODOS los registros
+     * y se hace un ForceDelete de este registro, para después redirigirnos
+     * a la vista INDEX
+     */
+
+    public function forcedelete($id)
+    {
+        $vacante = Vacante::withTrashed()->find($id);
+        $vacante->forceDelete();
+
+        return redirect('/vacantes/papelera');
+    }
+
+     /**
+     * El metodo recuperar recibe un ID de un empleado, lo busca entre 
+     * TODOS los registros y aplica el metodo restore para actualizar la
+     * columna delete_at y hacer que aparezca de nuevo en la vista INDEX
+     */
+
+    public function recuperar($id)
+    {
+        $vacante = Vacante::withTrashed()->find($id);
+        $vacante->restore();
 
         return redirect('/vacante');
     }
