@@ -148,7 +148,9 @@ class VacanteController extends Controller
         //Elimina todos los registros de Solicitude relacionados a la Vacante, esto porque existen softDeletes
         $vacante->solicitudes()->delete();
 
-        return redirect('/vacante');
+        return redirect('/vacante')->with([
+            'deletePapelera' => 'La Vacante '. $deleteNameVacante .' ha sido enviado a la papelera correctamente.'
+        ]);
     }
 
     /**
@@ -176,7 +178,11 @@ class VacanteController extends Controller
         $vacante = Vacante::withTrashed()->find($id);
         $vacante->forceDelete();
 
-        return redirect('/vacantes/papelera');
+        $deleteNameVacante = $vacante->nombreVacante;
+
+        return redirect('/vacantes/papelera')->with([
+            'delete' => 'La Vacante '. $deleteNameVacante .' ha sido eliminada del sistema correctamente.'
+        ]);
     }
 
      /**
@@ -190,8 +196,6 @@ class VacanteController extends Controller
         $vacante = Vacante::withTrashed()->find($id);
         $vacante->restore();
 
-        return redirect('/vacante')->with([
-            'delete' => 'La Vacante '. $deleteNameVacante .' ha sido eliminada del sistema correctamente.'
-        ]);
+        return redirect('/vacante');
     }
 }

@@ -48,7 +48,7 @@
                                     <a class="btn btn-woox text-light" href="/vacantes/{{ $vacante->id }}/restore">Restaurar</a>
                                 </td>
                                 <td>
-                                    <form action="/vacantes/papelera/{{ $vacante->id }}" method="POST">
+                                    <form class="formulario-eliminar" action="/vacantes/papelera/{{ $vacante->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
