@@ -2,7 +2,7 @@
     <script>
         Swal.fire(
             'Eliminado',
-            '{{ session('delete') }}',
+            '{{ session('delete', '') }}',
             'success'
         )
     </script>

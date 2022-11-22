@@ -1,8 +1,8 @@
 @if(session()->has('deletePapelera'))
     <script>
         Swal.fire(
-            'Eliminado',
-            '{{ session('deletePapelera') }}',
+            'Movido exitosamente',
+            '{{ session('deletePapelera', '') }}',
             'success'
         )
     </script>

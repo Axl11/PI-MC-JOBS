@@ -122,11 +122,29 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
+        $mensajeError = '';
+        $count=0;
         $deleteNameEmpresa = $empresa->nombreEmpresa;
-        $empresa->delete();
+
+        // Contamos los registros en las relaciones
+        $count+=count($empresa->vacantes);
+        // Comprobamos si existen registros 
+        if($count>0) {
+            $mensajeError =  'La empresa '. $empresa->nombreEmpresa .' no puede ser eliminada, por favor, reasigna las vacantes a otra empresa.';
+            
+        } else {
+            // si no hay registros eliminamos
+            $empresa->delete();
+            $mensajeError = 'La empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.';
+        }
+
+        /* $empresa->delete(); */
 
         return redirect('empresa')->with([
-            'delete' => 'La Empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.'
+            /* 'delete' => 'La empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.', */
+            'mensaje' => $mensajeError,
+            'alert_type' => 'alert-danger',
+            'icon' => 'fa-solid fa-pen-to-square'
         ]);
     }
 }
