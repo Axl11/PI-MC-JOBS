@@ -231,9 +231,17 @@ class EmpleadoController extends Controller
 
     public function recuperar($id)
     {
+        
         $empleado = Empleado::withTrashed()->find($id);
         $empleado->restore();
+        
+        $restoreNameEmpleado = $empleado->nombreEmpleado;
+        $restoreApellidoEmpleado = $empleado->apellidoEmpleado;
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with([
+            'mensaje' => 'El Empleado '. $restoreNameEmpleado . ' '. $restoreApellidoEmpleado .' se ha restaurado exitosamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-trash-arrow-up'
+        ]);
     }
 }

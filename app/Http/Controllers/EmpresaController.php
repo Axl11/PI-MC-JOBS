@@ -130,21 +130,21 @@ class EmpresaController extends Controller
         $count+=count($empresa->vacantes);
         // Comprobamos si existen registros 
         if($count>0) {
-            $mensajeError =  'La empresa '. $empresa->nombreEmpresa .' no puede ser eliminada, por favor, reasigna las vacantes a otra empresa.';
+            $mensajeError =  'La empresa '. $deleteNameEmpresa .' no puede ser eliminada, por favor, reasigna las vacantes a otra empresa.';
+
+            return redirect('empresa')->with([
+                'mensaje' => $mensajeError,
+                'alert_type' => 'alert-danger',
+                'icon' => 'fa-solid fa-pen-to-square'
+            ]);
             
         } else {
             // si no hay registros eliminamos
             $empresa->delete();
-            $mensajeError = 'La empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.';
+
+            return redirect('empresa')->with([
+                'delete' => 'La empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.',
+            ]);
         }
-
-        /* $empresa->delete(); */
-
-        return redirect('empresa')->with([
-            /* 'delete' => 'La empresa '. $deleteNameEmpresa .' ha sido eliminada del sistema correctamente.', */
-            'mensaje' => $mensajeError,
-            'alert_type' => 'alert-danger',
-            'icon' => 'fa-solid fa-pen-to-square'
-        ]);
     }
 }
