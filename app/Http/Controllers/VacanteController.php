@@ -196,6 +196,12 @@ class VacanteController extends Controller
         $vacante = Vacante::withTrashed()->find($id);
         $vacante->restore();
 
-        return redirect('/vacante');
+        $restoreVacante = $vacante->id;
+
+        return redirect('/vacante')->with([
+            'mensaje' => 'La Vacante con id '. $restoreVacante .' se ha restaurado exitosamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-trash-arrow-up'
+        ]);
     }
 }
