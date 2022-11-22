@@ -8,6 +8,9 @@
     <div class="text-center">
         <h1 class="text-dark pt-3">Listado de Departamentos</h1>         
     </div>
+
+    <x-alert></x-alert>
+    
     <div class="border-button ps-4 pe-4 my-3 d-flex">
         <a href="/departamento/create">Añadir nuevo Departamento</a>
     </div>
@@ -38,7 +41,7 @@
                                     <a class="btn btn-woox text-light" href="/departamento/{{ $departamento->id }}/edit">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="/departamento/{{ $departamento->id }}" method="POST">
+                                    <form class="formulario-eliminar" action="/departamento/{{ $departamento->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

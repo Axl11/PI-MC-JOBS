@@ -70,7 +70,11 @@ class VacanteController extends Controller
 
         Vacante::create($request->all());
 
-        return redirect('/vacante');
+        return redirect('/vacante')->with([
+            'mensaje' => 'Vacante añadida al sistema correctamente.',
+            'alert_type' => 'alert-success',
+            'icon' => 'fa-solid fa-check'
+        ]);
     }
 
     /**
@@ -110,6 +114,8 @@ class VacanteController extends Controller
      */
     public function update(Request $request, Vacante $vacante)
     {
+        $updateVacante = $vacante->id;
+
         $request->validate([
             'nombreVacante'=>'required|min:1|max:255',
             'descripcionVacante'=>'required|min:10|max:255',
@@ -122,7 +128,11 @@ class VacanteController extends Controller
         
         Vacante::where('id', $vacante->id)->update($request->except('_token', '_method'));
 
-        return redirect('/vacante');
+        return redirect('/vacante')->with([
+            'mensaje' => 'Datos de la Vacante '. $updateVacante .' actualizados correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-pen-to-square'
+        ]);
     }
 
     /**
@@ -133,6 +143,7 @@ class VacanteController extends Controller
      */
     public function destroy(Vacante $vacante)
     {
+        $deleteNameVacante = $vacante->nombreVacante;
         $vacante->delete();
         //Elimina todos los registros de Solicitude relacionados a la Vacante, esto porque existen softDeletes
         $vacante->solicitudes()->delete();
@@ -179,6 +190,8 @@ class VacanteController extends Controller
         $vacante = Vacante::withTrashed()->find($id);
         $vacante->restore();
 
-        return redirect('/vacante');
+        return redirect('/vacante')->with([
+            'delete' => 'La Vacante '. $deleteNameVacante .' ha sido eliminada del sistema correctamente.'
+        ]);
     }
 }

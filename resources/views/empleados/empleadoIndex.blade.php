@@ -8,6 +8,9 @@
     <div class="text-center">
         <h1 class="text-dark pt-3">Listado de Empleados</h1>         
     </div>
+
+    <x-alert></x-alert>
+    
     <div class="border-button ps-4 pe-4 my-3 d-flex ">
         <a href="/empleado/create">Añadir nuevo empleado</a>
         <a class="ms-auto" href="/empleados/papelera">PAPELERA</a>
@@ -58,7 +61,8 @@
                                     <a class="btn btn-woox text-light" href="/empleado/{{ $empleado->id }}/edit">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="/empleado/{{ $empleado->id }}" method="POST">
+                                    
+                                    <form class="formulario-papelera" action="/empleado/{{ $empleado->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

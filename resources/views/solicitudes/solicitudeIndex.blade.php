@@ -9,6 +9,9 @@
         <div class="text-center">
             <h1 class="text-dark pt-3">Listado de Solicitudes: {{ \Auth::user()->name }}</h1>         
         </div>
+
+        <x-alert></x-alert>
+        
         <div class="border-button ps-4 pe-4 my-3 d-flex">
             <a href="/solicitude/create">Añadir nueva solicitud</a>
         </div>
@@ -61,7 +64,7 @@
                                 </td>
                                 <td>
                                     @can('delete', $solicitude)
-                                    <form action="/solicitude/{{ $solicitude->id }}" method="POST">
+                                    <form class="formulario-eliminar" action="/solicitude/{{ $solicitude->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

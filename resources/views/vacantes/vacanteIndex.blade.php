@@ -9,6 +9,9 @@
         <div class="text-center">
             <h1 class="text-dark pt-3">Listado de Vacantes</h1>         
         </div>
+
+        <x-alert></x-alert>
+        
         <div class="border-button ps-4 pe-4 my-3 d-flex">
             <a href="/vacante/create">Añadir nueva vacante</a>
             <a class="ms-auto" href="/vacantes/papelera">PAPELERA</a>
@@ -49,7 +52,7 @@
                                     <a class="btn btn-woox text-light" href="/vacante/{{ $vacante->id }}/edit">Editar</a>
                                 </td>
                                 <td>
-                                    <form action="/vacante/{{ $vacante->id }}" method="POST">
+                                    <form class="formulario-eliminar" action="/vacante/{{ $vacante->id }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 

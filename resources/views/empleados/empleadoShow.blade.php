@@ -9,6 +9,9 @@
         <div class="text-center">
             <h1 class="text-dark pt-3">Detalle del Empleado</h1>         
         </div>
+
+        <x-alert></x-alert>
+
         <div class="border-button py-3 ps-4">
             <a href="/empleado">Regresar</a>
         </div>

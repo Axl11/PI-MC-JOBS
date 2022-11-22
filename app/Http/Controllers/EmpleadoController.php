@@ -75,7 +75,11 @@ class EmpleadoController extends Controller
             para tener acceso vincular el empleado con los departamentos*/
         $empleado->departamentos()->attach($request->departamentos_id);
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with([
+            'mensaje' => 'Empleado añadido al sistema correctamente.',
+            'alert_type' => 'alert-success',
+            'icon' => 'fa-solid fa-check'
+        ]);
     }
 
     /**
@@ -113,6 +117,8 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, Empleado $empleado)
     {
+        $updateEmpleado = $empleado->id;
+        
         $request->validate([
             'nombreEmpleado' => 'required|string|max:50',
             'apellidoEmpleado' => 'required|string|max:50',
@@ -155,7 +161,11 @@ class EmpleadoController extends Controller
         // return redirect('/empleado');
 
         //Redirecciona a la ruta show
-        return redirect()->route('empleado.update', $empleado->id);
+        return redirect()->route('empleado.update', $empleado->id)->with([
+            'mensaje' => 'Datos del Empleado '. $updateEmpleado .' actualizados correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fa-solid fa-pen-to-square'
+        ]);
     }
 
     /**
@@ -166,13 +176,18 @@ class EmpleadoController extends Controller
      */
     public function destroy(Empleado $empleado)
     {
+        $deleteNameEmpleado = $empleado->nombreEmpleado;
+        $deleteApellidoEmpleado = $empleado->apellidoEmpleado;
+        
         /* Quitamos la relación que existe entre la tabla Empleado y el id de departamentos
             Para que a nivel de base de datos no nos arroje error de llave violada */
         $empleado->departamentos()->detach();
 
         $empleado->delete();
 
-        return redirect('/empleado');
+        return redirect('/empleado')->with([
+            'deletePapelera' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido enviado a la papelera correctamente.'
+        ]);
     }
 
     /**
@@ -200,7 +215,12 @@ class EmpleadoController extends Controller
         $empleado = Empleado::withTrashed()->find($id);
         $empleado->forceDelete();
 
-        return redirect('/empleados/papelera');
+        $deleteNameEmpleado = $empleado->nombreEmpleado;
+        $deleteApellidoEmpleado = $empleado->apellidoEmpleado;
+
+        return redirect('/empleados/papelera')->with([
+            'delete' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido eliminado del sistema correctamente.'
+        ]);
     }
 
      /**

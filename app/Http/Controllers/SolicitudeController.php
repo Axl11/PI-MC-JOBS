@@ -103,7 +103,11 @@ class SolicitudeController extends Controller
             $solicitude->archivos()->save($archivo);
         }
         
-        return redirect('/solicitude');    
+        return redirect('/solicitude')->with([
+            'mensaje' => 'Solicitud añadida al sistema correctamente.',
+            'alert_type' => 'alert-success',
+            'icon' => 'fas fa-check'
+        ]);    
     }
 
     /**
@@ -149,6 +153,8 @@ class SolicitudeController extends Controller
      */
     public function update(Request $request, Solicitude $solicitude)
     {
+        $updateSolicitude = $solicitude->id;
+
         $request->validate([
             'nombreUser'=>'required|string|max:50',
             'apellidoUser'=>'required|string|max:50',
@@ -162,7 +168,11 @@ class SolicitudeController extends Controller
         
         Solicitude::where('id', $solicitude->id)->update($request->except('_token', '_method'));
 
-        return redirect('/solicitude');
+        return redirect('/solicitude')->with([
+            'mensaje' => 'Datos de la Solicitud '. $updateSolicitude .' actualizados correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fas fa-check'
+        ]);
     }
 
     /**
@@ -174,9 +184,13 @@ class SolicitudeController extends Controller
     public function destroy(Solicitude $solicitude)
     {
         $this->authorize('delete', $solicitude);
+        $deleteNameSolicitude = $solicitude->nombreUser;
+        $deleteApellidoSolicitude = $solicitude->apellidoUser;
         $solicitude->delete();
 
-        return redirect('/solicitude');
+        return redirect('/solicitude')->with([
+            'delete' => 'La Solicitud del usuario '. $deleteNameSolicitude . $deleteApellidoSolicitude .' ha sido eliminada del sistema correctamente.'
+        ]);
     }
 
     /**

@@ -6,6 +6,8 @@
     
     <script src="https://kit.fontawesome.com/21fe155778.js" crossorigin="anonymous"></script>
 
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ asset('assets/estilos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/woox/animate.css') }}">
@@ -26,6 +28,13 @@
     <script src="{{ asset('assets/woox/custom.js') }}"></script>
     <script src="{{ asset('assets/woox/popup.js') }}"></script>
     <script src="{{ asset('assets/woox/tabs.js') }}"></script>
+
+    <!-- Sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <x-modal-eliminar></x-modal-eliminar>
+    <x-modal-papelera></x-modal-papelera>
 
     <!-- <script>
         function bannerSwitcher() {
