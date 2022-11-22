@@ -11,6 +11,7 @@
         </div>
         <div class="border-button ps-4 pe-4 my-3 d-flex">
             <a href="/vacante/create">Añadir nueva vacante</a>
+            <a class="ms-auto" href="/vacantes/papelera">PAPELERA</a>
         </div>
         <div class="container-fluid mt-1 px-4">
             <div class="table-responsive">

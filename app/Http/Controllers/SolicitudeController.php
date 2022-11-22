@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Storage;
 
 class SolicitudeController extends Controller
 {
+    /* 
+        La siguiente funcion es para validar si el usuario está logeado o no. 
+
+        En caso de no estar logeado con una cuenta, no se le permitirá acceder 
+        a ninguno de los metodos.
+
+        En caso de estar logeado, tendrá acceso a todos los metodos disponibles en
+        este controlador.
+    */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -101,6 +114,7 @@ class SolicitudeController extends Controller
      */
     public function show(Solicitude $solicitude)
     {
+        $this->authorize('view', $solicitude);
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Show
         $vacantes = Vacante::all();
 

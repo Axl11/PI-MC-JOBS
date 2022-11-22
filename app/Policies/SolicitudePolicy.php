@@ -30,7 +30,7 @@ class SolicitudePolicy
      */
     public function view(User $user, Solicitude $solicitude)
     {
-        //
+        return $user->id == $solicitude->user_id;
     }
 
     /**

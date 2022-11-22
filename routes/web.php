@@ -41,6 +41,11 @@ Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);
 Route::delete('/empleados/papelera/{id}', [EmpleadoController::class, 'forcedelete']);
 Route::get('/empleados/{id}/restore', [EmpleadoController::class, 'recuperar']);
 
+/** Las siguientes tres rutas pertenecen a Vacante, a la seccion de PAPELERA */
+Route::get('/vacantes/papelera', [VacanteController::class, 'papelera']);
+Route::delete('/vacantes/papelera/{id}', [VacanteController::class, 'forcedelete']);
+Route::get('/vacantes/{id}/restore', [VacanteController::class, 'recuperar']);
+
 Route::get('/solicitud/notifica/{solicitude}', [SolicitudeController::class, 'notificarSolicitud']);
 
 Route::middleware([
