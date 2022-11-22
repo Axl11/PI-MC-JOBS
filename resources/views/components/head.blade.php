@@ -33,6 +33,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
     <x-modal-eliminar></x-modal-eliminar>
+    <x-modal-papelera></x-modal-papelera>
 
     <!-- <script>
         function bannerSwitcher() {

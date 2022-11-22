@@ -185,7 +185,7 @@ class EmpleadoController extends Controller
         $empleado->delete();
 
         return redirect('/empleado')->with([
-            'delete' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido eliminado del sistema correctamente.'
+            'deletePapelera' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido enviado a la papelera correctamente.'
         ]);
     }
 
@@ -214,7 +214,12 @@ class EmpleadoController extends Controller
         $empleado = Empleado::withTrashed()->find($id);
         $empleado->forceDelete();
 
-        return redirect('/empleados/papelera');
+        $deleteNameEmpleado = $empleado->nombreEmpleado;
+        $deleteApellidoEmpleado = $empleado->apellidoEmpleado;
+
+        return redirect('/empleados/papelera')->with([
+            'delete' => 'El Empleado '. $deleteNameEmpleado . ' '. $deleteApellidoEmpleado .' ha sido eliminado del sistema correctamente.'
+        ]);
     }
 
      /**

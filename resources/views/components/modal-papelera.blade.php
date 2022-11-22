@@ -1,8 +1,8 @@
-@if(session()->has('delete'))
+@if(session()->has('deletePapelera'))
     <script>
         Swal.fire(
             'Eliminado',
-            '{{ session('delete') }}',
+            '{{ session('deletePapelera') }}',
             'success'
         )
     </script>
@@ -10,15 +10,15 @@
 
     <script>
 
-        $('.formulario-eliminar').submit(function(e) {
+        $('.formulario-papelera').submit(function(e) {
             e.preventDefault();
 
             Swal.fire({
                 title: '¿Estás seguro?',
-                text: '¡No será posible revertir esta acción!',
+                text: '¡Este registro se moverá a la papelera!',
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Eliminar',
+                confirmButtonText: 'Mover a papelera',
                 confirmButtonColor: '#dc3545',
                 cancelButtonColor: '#6c757d',
                 cancelButtonText: 'Cancelar',
