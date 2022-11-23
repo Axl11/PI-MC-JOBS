@@ -125,7 +125,7 @@ class DepartamentoController extends Controller
         $departamento->delete();
 
         return redirect('departamento')->with([
-            'delete' => 'El Departamento '. $deleteName .' ha sido eliminado del sistema correctamente.'
+            'delete' => 'El Departamento '. $deleteName .' ha sido eliminado del sistema correctamente, se ha quitado la relación con los empleados.'
         ]);
     }
 }

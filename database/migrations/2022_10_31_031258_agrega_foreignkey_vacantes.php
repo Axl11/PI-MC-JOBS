@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('vacantes', function (Blueprint $table) {
-            $table->foreignId('empresa_id')->constrained();
+            $table->foreignId('empresa_id')->constrained()->cascadeOnDelete();
             $table->softDeletes();
         });
     }

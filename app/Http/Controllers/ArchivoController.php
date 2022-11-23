@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArchivoController extends Controller
 {
@@ -57,7 +58,7 @@ class ArchivoController extends Controller
      */
     public function edit(Archivo $archivo)
     {
-        //
+        return view('archivos/archivoEdit', compact('archivo'));
     }
 
     /**
@@ -69,7 +70,17 @@ class ArchivoController extends Controller
      */
     public function update(Request $request, Archivo $archivo)
     {
-        //
+        $request->validate([
+            'archivo'=>'required',
+        ]);
+
+        Archivo::where('id', $archivo->id)->update($request->except('_token', '_method'));
+
+        return back()->with([
+            'mensaje' => 'Archivo actualizado correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fas fa-check'
+        ]);
     }
 
     /**
@@ -78,8 +89,17 @@ class ArchivoController extends Controller
      * @param  \App\Models\Archivo  $archivo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Archivo $archivo)
+    public function destroy($id)
     {
-        //
+        //Obtener el archivo que se quiere eliminar
+        $file = Archivo::whereId($id)->firstOrFail();
+
+        //Borrar del Storage - Almacenamiento Local
+        unlink(public_path(Storage::url($file->ubicacion)));
+
+        //Borrar el registro de la base de datos
+        $file->delete();
+
+        return back();
     }
 }
