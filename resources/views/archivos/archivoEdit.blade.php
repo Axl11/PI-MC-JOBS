@@ -23,12 +23,12 @@
                         @method('PATCH')
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1>Editando Archivo</h1>
+                                <h1>Editando Archivo {{ $archivo->nombreOriginal }}</h1>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
                                     <label for="archivo" class="form-label">Nuevo Archivo</label></br>
-                                        <input type="file" name="archivo" id="archivo">
+                                        <input type="file" name="archivo" id="archivo" value="{{ $archivo->nombreOriginal }}">
                                     </br>
                                 </fieldset>
                             </div>
