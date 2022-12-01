@@ -28,7 +28,7 @@
                             <div class="col-lg-12">
                                 <fieldset>
                                     <label for="archivo" class="form-label">Nuevo Archivo</label></br>
-                                        <input type="file" name="archivo" id="archivo" value="{{ $archivo->nombreOriginal }}">
+                                        <input type="file" name="archivo" id="archivo">
                                     </br>
                                 </fieldset>
                             </div>
