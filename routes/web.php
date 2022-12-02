@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\VacanteController;
 use App\Models\Empleado;
 use App\Http\Controllers\EmpleadoController;
@@ -35,6 +36,10 @@ Route::resource('solicitude', SolicitudeController::class);
 
 /**La siguiente ruta pertenece a Solicitude, sirve para descargar el ARCHIVO */
 Route::get('/descargaArchivoCV/{archivo}', [SolicitudeController::class, 'descargaArchivo'])->name('descargaArchivoCV');
+/**La siguiente ruta es el metodo Destroy de archivos para eliminarlos individualmente */
+Route::delete('/archivo/{archivo}/delete', [ArchivoController::class, 'destroy'])->name('archivo.eliminar');
+Route::get('/archivo/{archivo}/edit', [ArchivoController::class, 'edit'])->name('archivo.editar');
+Route::patch('/archivos/{archivo}', [ArchivoController::class, 'update'])->name('archivo.update');
 
 /** Las siguientes tres rutas pertenecen a Empleado, a la seccion de PAPELERA */
 Route::get('/empleados/papelera', [EmpleadoController::class, 'papelera']);

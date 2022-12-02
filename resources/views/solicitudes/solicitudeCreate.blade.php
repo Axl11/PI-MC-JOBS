@@ -78,7 +78,7 @@
                                 <div class="col-lg-6">
                                     <fieldset>
                                         <label for="archivo" class="form-label">CV</label></br>
-                                            <input type="file" name="archivo" id="archivo">
+                                            <input type="file" name="archivos[]" id="archivo" multiple>
                                         </br>
                                     </fieldset>
                                 </div>

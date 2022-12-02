@@ -44,8 +44,30 @@
                         <li>
                             <label class="fw-bold" for="archivo">Currículum Vitae: </label><br>
                                 @foreach ($solicitude->archivos as $archivo)
-                                    <i class="fa-solid fa-folder"></i> 
+                                    <i class="fa-solid fa-folder"></i>
+                                    <!-- Enlace para descargar el archivo con su nombre original -->
                                     <a href="{{ route('descargaArchivoCV', $archivo) }}">{{ $archivo->nombreOriginal }}</a>
+                                    
+                                    <div class="row">
+                                        <div class="col-2">
+                                        <a class="btn btn-woox text-light" href="/archivo/{{ $archivo->id }}/edit">Editar</a>
+                                        </div>
+                                        
+                                        <!-- Botón para reemplazar el archivo actual por otro -->
+                                        <!-- <a class="btn btn-woox text-light" href="{{ route('archivo.editar', $archivo) }}">Actualizar</a> -->
+                                        <!-- Formulario para eliminar un archivo -->
+                                        
+                                        <div class="col-2">
+                                        <form class="formulario-eliminar" action="{{ route('archivo.eliminar', $archivo->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                            <input class="btn btn-danger" type="submit" value="Borrar">
+                                        </form>
+                                        </div>
+                                        
+                                        <!-- <br> -->
+                                    </div>
                                 @endforeach
 
                         </li>   

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('archivos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('solicitude_id');
+            $table->foreignId('solicitude_id')->constrained()->cascadeOnDelete();
             $table->string('ubicacion');
             $table->string('nombreOriginal');
             // Multipurpose Internet Mail Extensions para identicar tipos de archivos a través de Internet

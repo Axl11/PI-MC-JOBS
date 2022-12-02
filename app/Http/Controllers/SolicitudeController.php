@@ -75,6 +75,7 @@ class SolicitudeController extends Controller
             'telefonoUser'=>'required|string|digits:10',
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
+            'archivos' => 'required',
         ]);
         
         /**
@@ -85,22 +86,28 @@ class SolicitudeController extends Controller
 
         $solicitude = Solicitude::create($request->all());
 
-        // Validación de archivos //
-        if ($request->file('archivo')->isValid()) {
-            /** Se asigna en 'ubicacion' el path del archivo que se almacena dentro de la carpeta local 'solicitudes' */
-            $ubicacion = $request->archivo->store('solicitudes');
-
-            // Inicializamos un nuevo objeto Archivo //
-            $archivo = new Archivo();
-            // Le asignamos al atributo 'ubicacion' del modelo 'archivo' su ubicacion de almacenamiento //
-            $archivo->ubicacion = $ubicacion;
-            // Le asignamos al atributo 'nombreOriginal' del modelo 'archivo' una función que ayuda a obtener el nombre original del cliente //
-            $archivo->nombreOriginal = $request->archivo->getClientOriginalName();
-            // Le asignamos al atributo 'mime' del modelo 'archivo' un valor por default //
-            $archivo->mime = '';
-
-            // Guardamos el objeto 'archivo' con la relación a nivel modelo //
-            $solicitude->archivos()->save($archivo);
+        $files = $request->file('archivos');
+        
+        if($files != null){
+            foreach($files as $file){
+                // Validación de archivos //
+                if ($file->isValid()) {
+                    /** Se asigna en 'ubicacion' el path del archivo que se almacena dentro de la carpeta local 'solicitudes' */
+                    $ubicacion = $file->store('public');
+        
+                    // Inicializamos un nuevo objeto Archivo //
+                    $archivo = new Archivo();
+                    // Le asignamos al atributo 'ubicacion' del modelo 'archivo' su ubicacion de almacenamiento //
+                    $archivo->ubicacion = $ubicacion;
+                    // Le asignamos al atributo 'nombreOriginal' del modelo 'archivo' una función que ayuda a obtener el nombre original del cliente //
+                    $archivo->nombreOriginal = $file->getClientOriginalName();
+                    // Le asignamos al atributo 'mime' del modelo 'archivo' un valor por default //
+                    $archivo->mime = '';
+        
+                    // Guardamos el objeto 'archivo' con la relación a nivel modelo //
+                    $solicitude->archivos()->save($archivo);
+                }
+            }
         }
         
         return redirect('/solicitude')->with([
@@ -186,6 +193,17 @@ class SolicitudeController extends Controller
         $this->authorize('delete', $solicitude);
         $deleteNameSolicitude = $solicitude->nombreUser;
         $deleteApellidoSolicitude = $solicitude->apellidoUser;
+        $count = 0;
+
+        //Eliminar Imagenes relacionadas con producto
+        foreach($solicitude->archivos as $image){
+            $count++;
+            $file = Archivo::whereId($image->id)->firstOrFail();
+            if($count > 0){
+                unlink(public_path(Storage::url($file->ubicacion)));
+            }
+        }
+
         $solicitude->delete();
 
         return redirect('/solicitude')->with([
