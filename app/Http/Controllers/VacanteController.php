@@ -20,7 +20,7 @@ class VacanteController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth')->except('index', 'show', 'vacanteUsuario');
     }
 
     /**
@@ -39,7 +39,7 @@ class VacanteController extends Controller
 
     public function vacanteUsuario()
     {
-        $vacantes = Vacante::all();
+        $vacantes = Vacante::with('empresa')->get();
 
         return view('index', compact('vacantes'));
     }

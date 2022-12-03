@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="image">
-                        <img class="rounded" src="{{URL::asset('images/audifonos.jpg')}}" alt="No hay nada">
+                        <img class="rounded" src="{{URL::asset('images/vacante-index.jpg')}}" alt="No hay nada">
                     </div>
                 </div>
                 <div class="col-6">

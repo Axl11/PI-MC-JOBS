@@ -61,8 +61,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/index', function () {
-        return view('index');
-    })->name('index');
+    Route::get('/index', [VacanteController::class, 'vacanteUsuario'])->name('index');
 });
 //Las anteriores rutas eran /dashboard

@@ -7,7 +7,7 @@
 
         <x-navbar></x-navbar>
 
-        <div class="reservation-form">
+        <div class="reservation-form my-5">
             <div class="container">
                 <!-- <div class="text-center">
                     <h1 class="text-dark pt-3">Agregar Empleado</h1>         
