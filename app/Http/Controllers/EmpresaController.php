@@ -54,7 +54,7 @@ class EmpresaController extends Controller
     {
         $request->validate([
             'nombreEmpresa' => 'required|string|max:50',
-            'descripcionEmpresa' => 'required|string|min:2',
+            'descripcionEmpresa' => 'required|string|min:5|max:255',
         ]);
 
         Empresa::create($request->all());
@@ -102,7 +102,7 @@ class EmpresaController extends Controller
         
         $request->validate([
             'nombreEmpresa' => 'required|string|max:50',
-            'descripcionEmpresa' => 'required|string|min:2',
+            'descripcionEmpresa' => 'required|string|min:5|max:255',
         ]);
 
         Empresa::where('id', $empresa->id)->update($request->except('_token', '_method'));

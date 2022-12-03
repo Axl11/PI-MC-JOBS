@@ -69,10 +69,10 @@ class SolicitudeController extends Controller
         $request->validate([
             'nombreUser'=>'required|string|max:50',
             'apellidoUser'=>'required|string|max:50',
-            'edadUser'=>'required|string|min:0|max:150',
+            'edadUser'=>'required|numeric|min:0|max:150',
             'ciudadUser'=>'required|string|max:30',
             'coloniaUser'=>'required|string|max:30',
-            'telefonoUser'=>'required|string|digits:10',
+            'telefonoUser'=>'required|numeric|digits:10',
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
             'archivos' => 'required',
@@ -89,6 +89,7 @@ class SolicitudeController extends Controller
         $files = $request->file('archivos');
         
         if($files != null){
+            //Se pueden recibir muchos archivos
             foreach($files as $file){
                 // Validación de archivos //
                 if ($file->isValid()) {
@@ -163,10 +164,10 @@ class SolicitudeController extends Controller
         $request->validate([
             'nombreUser'=>'required|string|max:50',
             'apellidoUser'=>'required|string|max:50',
-            'edadUser'=>'required|string|min:0|max:150',
+            'edadUser'=>'required|numeric|min:0|max:150',
             'ciudadUser'=>'required|string|max:30',
             'coloniaUser'=>'required|string|max:30',
-            'telefonoUser'=>'required|string|digits:10',
+            'telefonoUser'=>'required|numeric|digits:10',
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
         ]);

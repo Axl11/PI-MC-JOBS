@@ -53,7 +53,7 @@ class DepartamentoController extends Controller
     {
         $request->validate([
             'nombreDepartamento' => 'required|string|max:50',
-            'descripcionDepartamento' => 'required|string|min:2',
+            'descripcionDepartamento' => 'required|string|min:5|max:255',
         ]);
 
         Departamento::create($request->all());
@@ -101,7 +101,7 @@ class DepartamentoController extends Controller
 
         $request->validate([
             'nombreDepartamento' => 'required|string|max:50',
-            'descripcionDepartamento' => 'required|string|min:2',
+            'descripcionDepartamento' => 'required|string|min:5|max:255',
         ]);
 
         Departamento::where('id', $departamento->id)->update($request->except('_token', '_method'));

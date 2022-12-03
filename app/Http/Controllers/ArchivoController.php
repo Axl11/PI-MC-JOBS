@@ -77,7 +77,7 @@ class ArchivoController extends Controller
     public function update(Request $request, Archivo $archivo)
     {
         $request->validate([
-            'archivo'=>'required',
+            'archivo'=>'required|file',
         ]);
 
         $file = Archivo::findOrFail($archivo->id);
