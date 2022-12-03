@@ -60,13 +60,13 @@ class EmpleadoController extends Controller
         $request->validate([
             'nombreEmpleado' => 'required|string|max:50',
             'apellidoEmpleado' => 'required|string|max:50',
-            'numeroSeguroSocialEmpleado' => 'required|string|size:11',
+            'numeroSeguroSocialEmpleado' => 'required|numeric|digits:11',
             'puestoLaboralEmpleado' => 'required|string|max:30',
-            'sueldoEmpleado' => 'required|min:0',
+            'sueldoEmpleado' => 'required|numeric|min:1|max:999999',
             'rfcEmpleado' => 'required|string|min:12|max:13',
             'fechaNacimientoEmpleado' => 'required|date',
             'curpEmpleado' => 'required|string|size:18',
-            'antiguedadEmpleado' => 'required|integer|min:0',
+            'antiguedadEmpleado' => 'required|integer|min:0|max:75',
         ]);
 
         $empleado = Empleado::create($request->all());
@@ -122,13 +122,13 @@ class EmpleadoController extends Controller
         $request->validate([
             'nombreEmpleado' => 'required|string|max:50',
             'apellidoEmpleado' => 'required|string|max:50',
-            'numeroSeguroSocialEmpleado' => 'required|string|size:11',
+            'numeroSeguroSocialEmpleado' => 'required|numeric|digits:11',
             'puestoLaboralEmpleado' => 'required|string|max:30',
-            'sueldoEmpleado' => 'required|min:0',
+            'sueldoEmpleado' => 'required|numeric|min:1|max:999999',
             'rfcEmpleado' => 'required|string|min:12|max:13',
             'fechaNacimientoEmpleado' => 'required|date',
             'curpEmpleado' => 'required|string|size:18',
-            'antiguedadEmpleado' => 'required|integer|min:0',
+            'antiguedadEmpleado' => 'required|integer|min:0|max:75',
         ]);
  
         // METODO 1: Update para la información nueva.

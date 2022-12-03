@@ -18,6 +18,6 @@ class EmpresasSeeder extends Seeder
         Empresa::create(['nombreEmpresa' => 'ELITE-SI', 'descripcionEmpresa' => 'Empresa 100% mexicana que se dedica al outsourcing']);
         Empresa::create(['nombreEmpresa' => 'BKT', 'descripcionEmpresa' => 'Operan sistemas de bicicletas compartidas adaptadas a tu ciudad y sus necesidades de micromovilidad.']);
 
-        Empresa::factory(10)->create();
+        Empresa::factory(6)->create();
     }
 }

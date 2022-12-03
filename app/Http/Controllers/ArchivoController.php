@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ArchivoController extends Controller
@@ -58,6 +59,11 @@ class ArchivoController extends Controller
      */
     public function edit(Archivo $archivo)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('edita-archivo', $archivo)){
+            abort(403);
+        }
+
         return view('archivos/archivoEdit', compact('archivo'));
     }
 
@@ -71,7 +77,7 @@ class ArchivoController extends Controller
     public function update(Request $request, Archivo $archivo)
     {
         $request->validate([
-            'archivo'=>'required',
+            'archivo'=>'required|file',
         ]);
 
         $file = Archivo::findOrFail($archivo->id);

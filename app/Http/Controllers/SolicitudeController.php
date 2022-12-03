@@ -69,10 +69,10 @@ class SolicitudeController extends Controller
         $request->validate([
             'nombreUser'=>'required|string|max:50',
             'apellidoUser'=>'required|string|max:50',
-            'edadUser'=>'required|string|min:0|max:150',
+            'edadUser'=>'required|numeric|min:0|max:150',
             'ciudadUser'=>'required|string|max:30',
             'coloniaUser'=>'required|string|max:30',
-            'telefonoUser'=>'required|string|digits:10',
+            'telefonoUser'=>'required|numeric|digits:10',
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
             'archivos' => 'required',
@@ -89,6 +89,7 @@ class SolicitudeController extends Controller
         $files = $request->file('archivos');
         
         if($files != null){
+            //Se pueden recibir muchos archivos
             foreach($files as $file){
                 // Validación de archivos //
                 if ($file->isValid()) {
@@ -140,11 +141,9 @@ class SolicitudeController extends Controller
      */
     public function edit(Solicitude $solicitude)
     {
-        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
-        if(! Gate::allows('edita-solicitude', $solicitude)){
-            abort(403);
-        }
-        
+        /** Se verifica si el usuario tiene la autorizacion de hacer este metodo */
+        $this->authorize('update', $solicitude);
+
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Edit
         $vacantes = Vacante::all();
 
@@ -165,10 +164,10 @@ class SolicitudeController extends Controller
         $request->validate([
             'nombreUser'=>'required|string|max:50',
             'apellidoUser'=>'required|string|max:50',
-            'edadUser'=>'required|string|min:0|max:150',
+            'edadUser'=>'required|numeric|min:0|max:150',
             'ciudadUser'=>'required|string|max:30',
             'coloniaUser'=>'required|string|max:30',
-            'telefonoUser'=>'required|string|digits:10',
+            'telefonoUser'=>'required|numeric|digits:10',
             'correoUser' => 'required|email',
             'vacante_id' => 'required|exists:vacantes,id',
         ]);
@@ -218,6 +217,10 @@ class SolicitudeController extends Controller
 
     public function descargaArchivo(Archivo $archivo)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('descargar-archivo', $archivo)){
+            abort(403);
+        }
         /**El método download() puede esperar dos parámetros:
          * 1. La ubicación del archivo
          * 2. El nombre con el que se va a descargar dicho archivo
@@ -227,8 +230,17 @@ class SolicitudeController extends Controller
 
     public function notificarSolicitud(Solicitude $solicitude)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('enviar-correo', $solicitude)){
+            abort(403);
+        }
+
         Mail::to($solicitude->user->email)->send(new NotificaSolicitud($solicitude));
 
-        return back();
+        return redirect('/solicitude')->with([
+            'mensaje' => 'Correo enviado correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fas fa-check'
+        ]);
     }
 }

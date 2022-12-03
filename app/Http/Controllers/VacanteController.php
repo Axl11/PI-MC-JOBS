@@ -66,12 +66,12 @@ class VacanteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombreVacante'=>'required|min:1|max:255',
+            'nombreVacante'=>'required|min:3|max:255',
             'descripcionVacante'=>'required|min:10|max:255',
-            'sueldoVacante'=>'min:0',
-            'direccionVacante'=>'required|min:1|max:255',
+            'sueldoVacante'=>'numeric|min:0|max:999999',
+            'direccionVacante'=>'required|min:5|max:255',
             'horarioVacante'=>'max:255',
-            'puestosDisponibles'=>'integer|min:0',
+            'puestosDisponibles'=>'integer|min:1',
             'empresa_id' => 'required|exists:empresas,id',
         ]);
 
@@ -124,12 +124,12 @@ class VacanteController extends Controller
         $updateVacante = $vacante->id;
 
         $request->validate([
-            'nombreVacante'=>'required|min:1|max:255',
+            'nombreVacante'=>'required|min:3|max:255',
             'descripcionVacante'=>'required|min:10|max:255',
-            'sueldoVacante'=>'min:0',
-            'direccionVacante'=>'required|min:1|max:255',
+            'sueldoVacante'=>'numeric|min:0|max:999999',
+            'direccionVacante'=>'required|min:5|max:255',
             'horarioVacante'=>'max:255',
-            'puestosDisponibles'=>'integer|min:0',
+            'puestosDisponibles'=>'integer|min:1',
             'empresa_id' => 'required|exists:empresas,id',
         ]);
         

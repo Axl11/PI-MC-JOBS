@@ -1,5 +1,5 @@
 @component('mail::message')
-#Notifica Solicitud Registrada Exitosamente
+<h1>Solicitud Registrada Exitosamente</h1>
 
 Usuari@ {{ $solicitude->user->name }} la solicitud que realizo fue registrada de manera éxitosa.
 
@@ -7,6 +7,6 @@ Usuari@ {{ $solicitude->user->name }} la solicitud que realizo fue registrada de
 Detalles Solicitud 
 @endcomponent
 
-Thanks, <br>
+Muchas gracias, <br>
 {{ config('app.name') }}
 @endcomponent
