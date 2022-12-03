@@ -26,6 +26,9 @@ Route::get('/', function () {
 
 Route::resource('vacante', VacanteController::class);
 
+/**La siguiente ruta pertenece a Vacante, sirve para mostrar vacantes en la vista del USUARIO */
+Route::get('/', [VacanteController::class, 'vacanteUsuario']);
+
 Route::resource('empleado', EmpleadoController::class);
 
 Route::resource('empresa', EmpresaController::class);

@@ -27,15 +27,15 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <i class="fa fa-user"></i>
-                                                <h4><span>Empleados:</span><br>44.48 M</h4>
+                                                <h4><span>Empleados:</span><br>100+</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <i class="fa fa-globe"></i>
-                                                <h4><span>Afiliados:</span><br>275.400 K</h4>
+                                                <h4><span>Afiliados:</span><br>500+</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <i class="fa fa-home"></i>
-                                                <h4><span>AVG Sueldo:</span><br>$946.000</h4>
+                                                <h4><span>AVG Sueldo:</span><br>$110,000</h4>
                                             </div>
                                             <div class="col-lg-3 col-sm-6 col-6">
                                                 <div class="main-button">
@@ -175,8 +175,116 @@
         </div>
     </section>
 
+    <div class="second-page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>MC-JOBS</h4>
+                    <h2>El crecimiento de cualquier Negocio tiene que ser a partir de hoy, así que desde hoy decídete por MC-JOBS.</h2>
+                    <p>Es una empresa 100% mexicana, conformada por especialistas con más de 10 años de experiencia en Recursos Humanos, Outsourcing, 
+                        Servicios Fiscales y Contables para empresas.</p>
+                    <div class="main-button"><a href="/">Descubrir Más</a></div>
+                </div>
+            </div>
+        </div>
+  </div>
+
+  <div class="more-info reservation-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6">
+          <div class="info-item">
+              <h2>MISION</h2>
+            <!-- <i class="fa fa-mission"></i> -->
+            <p>Satisfacer con excelencia las necesidades de nuestros clientes, siendo fieles a los principios de confidencialidad, 
+                respeto y honestidad. Nuestra experiencia nos permite asesorar a clientes con solidez, eficacia y solvencia.</p>
+            <!-- <a href="#">+123 456 789 (0)</a> -->
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="info-item">
+            <h2>VISIÓN</h2>
+            <!-- <i class="fa fa-envelope"></i> -->
+            <p>Ser una organización que logré posicionarse en el mercado a nivel nacional mediante un crecimiento sostenido 
+                y resultados equilibrados.</p>
+            <!-- <a href="#">company@email.com</a> -->
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+          <div class="info-item">
+            <h2>VALORES</h2>
+            <!-- <i class="fa fa-map-marker"></i> -->
+            <ul>
+                <li>Sinergía</li>
+                <li>Compromiso</li>
+                <li>Integridad</li>
+                <li>Confidencialidad</li>
+                <li>Honestidad</li>
+                <li>Respeto</li>
+            </ul>
+            <!-- <a href="#">24th Street North Avenue London, UK</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <section id="section-2">
-        <h1>COMPLEMENTOS</h1>
+        <div class="visit-country">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="section-heading">
+                        <h2>VACANTES</h2>
+                        <p>Busca dentro de nuestro sistema las vacantes disponibles.</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="items">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                @foreach ($vacantes as $vacante)
+                                    <div class="item">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-sm-5">
+                                                <div class="image">
+                                                    <img src="assets/images/country-01.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-sm-7">
+                                                <div class="right-content">
+                                                    <h4>{{ $vacante->nombreVacante}}</h4>
+                                                    <span>Dirección: {{ $vacante->direccionVacante }}</span>
+                                                    <div class="main-button">
+                                                        <a href="/">Explorar Más</a>
+                                                    </div>
+                                                    <p>{{ $vacante->descripcionVacante }}</p>
+                                                    <ul class="info">
+                                                    
+                                                        <li><p>Sueldo:</p><i class="fa fa-money"></i>${{ $vacante->sueldoVacante }}</li>
+                                                        <li><p>Horario:</p><i class="fa fa-clock"></i>{{ $vacante->horarioVacante }}</li>
+                                                    </ul>
+                                                    <ul class="info">
+                                                        <li><p>Empresa:</p><i class="fa fa-building"></i>{{ $vacante->empresa->nombreEmpresa }}</li>
+                                                        <li><p>Puestos:</p><i class="fa fa-home"></i>{{ $vacante->puestosDisponibles }}</li>
+                                                    </ul>
+                                                    <div class="text-button">
+                                                        <a href="/vacante/{{ $vacante->id }}">Ver más detalles <i class="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="call-to-action">
