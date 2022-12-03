@@ -2028,7 +2028,7 @@ Reservation Page Style
 */
 
 .second-page-heading {
-  background-image: url(../images/heading-bg-02.jpg);
+  background-image: url(/images/indexEmpresa1.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2086,7 +2086,7 @@ Reservation Page Style
 }
 
 .more-info .info-item {
-  background-color: #fff;
+  background-color: rgb(93, 109, 126);
   border-radius: 23px;
   box-shadow: 0px 0px 15px rgba(0,0,0,0.15);
   text-align: center;
@@ -2104,6 +2104,25 @@ Reservation Page Style
   color: #22b3c1;
   font-size: 20px;
   margin-bottom: 20px;
+}
+
+.more-info .info-item p {
+  padding: 0px 5%;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.more-info .info-item ul li {
+  padding: 0px 5%;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.more-info .info-item h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
 .more-info .info-item h4 {

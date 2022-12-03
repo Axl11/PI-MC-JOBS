@@ -37,6 +37,13 @@ class VacanteController extends Controller
         return view('vacantes/vacanteIndex', compact('vacantes'));
     }
 
+    public function vacanteUsuario()
+    {
+        $vacantes = Vacante::all();
+
+        return view('index', compact('vacantes'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
