@@ -18,6 +18,6 @@ class EmpleadosSeeder extends Seeder
         Empleado::create(['nombreEmpleado' => 'Axl', 'apellidoEmpleado' => 'Coronado', 'numeroSeguroSocialEmpleado' => '12345678912', 'puestoLaboralEmpleado' => 'Community Manager', 'sueldoEmpleado' => '1000', 'rfcEmpleado' => '1234567891234', 'fechaNacimientoEmpleado' => '2022-03-04', 'curpEmpleado' => 'COCB020304HJCRBRA8', 'antiguedadEmpleado' => '5']);
         Empleado::create(['nombreEmpleado' => 'Eduardo', 'apellidoEmpleado' => 'Martinez', 'numeroSeguroSocialEmpleado' => '12345678913', 'puestoLaboralEmpleado' => 'Conserje', 'sueldoEmpleado' => '1020', 'rfcEmpleado' => '1234567891235', 'fechaNacimientoEmpleado' => '2022-03-04', 'curpEmpleado' => 'COCB020304HJCRBRA7', 'antiguedadEmpleado' => '3']);
     
-        Empleado::factory(10)->create();
+        Empleado::factory(6)->create();
     }
 }

@@ -18,6 +18,6 @@ class DepartamentosSeeder extends Seeder
         Departamento::create(['nombreDepartamento' => 'Contabilidad', 'descripcionDepartamento' => 'Es muy bueno']);
         Departamento::create(['nombreDepartamento' => 'Reclutamiento', 'descripcionDepartamento' => 'Es muy malo']);
 
-        Departamento::factory(10)->create();
+        Departamento::factory(6)->create();
     }
 }
