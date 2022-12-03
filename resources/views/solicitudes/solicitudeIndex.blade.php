@@ -60,7 +60,11 @@
                                     <a href="/solicitud/notifica/{{ $solicitude->id }}">Enviar Correo</a>
                                 </td>
                                 <td>
+                                    @can('update', $solicitude)
                                     <a class="btn btn-woox text-light" href="/solicitude/{{ $solicitude->id }}/edit">Editar</a>
+                                    @else
+                                    <p>NO</p>
+                                    @endcan
                                 </td>
                                 <td>
                                     @can('delete', $solicitude)
@@ -71,7 +75,7 @@
                                     <input class="btn btn-danger" type="submit" value="Eliminar">
                                     </form>
                                     @else
-                                    <p>Disabled</p>
+                                    <p>NO</p>
                                     @endcan
                                 </td>
                             </tr>

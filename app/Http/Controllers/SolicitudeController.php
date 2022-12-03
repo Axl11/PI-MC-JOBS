@@ -140,11 +140,9 @@ class SolicitudeController extends Controller
      */
     public function edit(Solicitude $solicitude)
     {
-        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
-        if(! Gate::allows('edita-solicitude', $solicitude)){
-            abort(403);
-        }
-        
+        /** Se verifica si el usuario tiene la autorizacion de hacer este metodo */
+        $this->authorize('update', $solicitude);
+
         //Se asignan en 'vacantes' todas las instancias del modelo Vacante y se mandan a la vista Edit
         $vacantes = Vacante::all();
 
@@ -218,6 +216,10 @@ class SolicitudeController extends Controller
 
     public function descargaArchivo(Archivo $archivo)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('descargar-archivo', $archivo)){
+            abort(403);
+        }
         /**El método download() puede esperar dos parámetros:
          * 1. La ubicación del archivo
          * 2. El nombre con el que se va a descargar dicho archivo
@@ -227,8 +229,17 @@ class SolicitudeController extends Controller
 
     public function notificarSolicitud(Solicitude $solicitude)
     {
+        /** Si el GATE retorna un FALSE, se lanzará una pagina de abortar porque no se puede realizar la acción */
+        if(! Gate::allows('enviar-correo', $solicitude)){
+            abort(403);
+        }
+
         Mail::to($solicitude->user->email)->send(new NotificaSolicitud($solicitude));
 
-        return back();
+        return redirect('/solicitude')->with([
+            'mensaje' => 'Correo enviado correctamente.',
+            'alert_type' => 'alert-primary',
+            'icon' => 'fas fa-check'
+        ]);
     }
 }

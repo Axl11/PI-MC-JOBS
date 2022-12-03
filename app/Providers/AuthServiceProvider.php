@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Archivo;
 use App\Models\Solicitude;
 use App\Models\Team;
 use App\Models\User;
@@ -32,16 +33,26 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         /**
-         * Los siguientes dos métodos corresponden a los GATES de editar y eliminar una solicitud,
+         * Gate para evitar que se haga spam de correos si tu no eres el usuario que creó esa solicitud
          * Se compara si el ID del usuario corresponde al ID que tiene relacionado el registro en la tabla
          * solicitudes. Estos metodos retornan un TRUE o FALSE
          */
 
-        Gate::define('edita-solicitude', function (User $user, Solicitude $solicitude){
+        Gate::define('enviar-correo', function (User $user, Solicitude $solicitude){
             return $user->id === $solicitude->user_id;
         });
+
+        /** Gates relacionados con Archivos */
         
-        // Gate::define('elimina-solicitude', function (User $user, Solicitude $solicitude){
+        Gate::define('edita-archivo', function (User $user, Archivo $archivo){
+            return $user->id === $archivo->solicitude->user_id;
+        });
+        
+        Gate::define('descargar-archivo', function (User $user, Archivo $archivo){
+            return $user->id === $archivo->solicitude->user_id;
+        });
+
+        // Gate::define('edita-solicitude', function (User $user, Solicitude $solicitude){
         //     return $user->id === $solicitude->user_id;
         // });
     }

@@ -53,7 +53,7 @@ class SolicitudePolicy
      */
     public function update(User $user, Solicitude $solicitude)
     {
-        //
+        return $user->id == $solicitude->user_id;
     }
 
     /**
