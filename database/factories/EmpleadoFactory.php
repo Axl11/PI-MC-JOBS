@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Departamento;
+use App\Models\Empleado;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,5 +29,19 @@ class EmpleadoFactory extends Factory
             'curpEmpleado' => $this->faker->regexify('[A-Z\d]{18}'),
             'antiguedadEmpleado' => $this->faker->numberBetween(1, 50),
         ];
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * Despues de crear un empleado, se tomarán dos departamentos previamente creados,
+     * se relacionarán con este empleado
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function (Empleado $empleado){
+            $departamentos = Departamento::inRandomOrder()->limit(2)->get();
+            $empleado->departamentos()->attach($departamentos);
+        });
     }
 }
